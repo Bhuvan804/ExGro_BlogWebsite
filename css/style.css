@@ -30,6 +30,15 @@ h1, h2, h3, h4, h5,
   line-height: 1.5;
   color: #000; }
 
+  .blogs img{
+    max-width: 100%;
+    /*justify-content: center;*/
+    border-radius: 1.25rem;
+  }
+  .card{
+    border-radius: 1.25rem;
+  }
+
 .border-2 {
   border-width: 2px; }
 
