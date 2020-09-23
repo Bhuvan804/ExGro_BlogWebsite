@@ -1,0 +1,147 @@
+<%- include("./partials/header") %>
+
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light py-0">
+        <div class="container py-0">
+            <a class="navbar-brand" href="/"><img src="../../images/NEW LOGO.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse navbar-right" id="navLinks">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item">
+                <p class="m-0"><button><a class="nav-link py-3" href="/">Home</a></button></p>
+              </li>
+              <li class="nav-item">
+                <p class="m-0"><button><a class="nav-link py-3" href="/blogs">Blog</a></button></p>
+              </li>
+              <li class="nav-item active">
+                <p class="m-0"><button><a class="nav-link py-3" href="/about">About</a></button></p>
+              </li>
+              <li class="nav-item">
+                <p class="m-0"><button><a class="nav-link py-3" href="/contact">Contact</a></button></p>
+              </li>
+              <% if(!currentUser){ %>
+              <li class="nav-item">
+                  <p class="m-0"><button><a class="nav-link py-3" href="/login">Login</a></button></p>
+              </li>
+              <li class="nav-item">
+                <p class="m-0"><button><a class="nav-link py-3" href="/register">Sign Up</a></button></p>
+              </li>
+              <% } else { %>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle nav-link py-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="im im-user-settings"></i></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                        <p class="pl-3">Hey, <%= currentUser.firstName %></p>
+                    </li><hr>                          
+                        <li>
+                            <p class="pl-3"><a href="/users/<%= currentUser.id %>">My Account</a></p>
+                        </li><hr>
+                        <li>
+                            <p class="pl-3"><a href="/logout">Logout</a></p>
+                        </li>
+                  </ul>
+                </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container pt-3">
+        <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+    </div>
+
+	
+	<div class="container">
+		<header class="jumbotron p-0">
+         <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="/"><p class="m-0">Home</p></a></li>
+                        <li class="breadcrumb-item" aria-current="page"><p class="m-0">About</p></li>
+                    </ol>
+                    <!-- <hr class="mt-0"> -->
+                </nav>
+    	    </div>
+    	</header>
+	</div>
+	
+
+	<section>
+		<div id="about" class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<h1>Our Team</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim eniam,</p>
+				</div>
+				<div class="col-lg-6">
+					<div class="btn-right">
+						<a class="btn btn-success" href="#">Appointment</a>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-conetnt-center">
+				<div class="col-lg-3">
+					<div class="card text-center border-success">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <h5 class="card-title">Udhav</h5>
+					    <p class="card-text">Photographer</p>
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+				  <div class="card text-center border-success">
+				  	<img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+				  	<div class="card-body">
+				    	<h5 class="card-title">Udhav</h5>
+				    	<p class="card-text">Photographer</p>
+				  	</div>
+				   </div>
+				</div>
+				<div class="col-lg-3">
+				  <div class="card text-center border-success">
+				  	<img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+				  	<div class="card-body">
+				    	<h5 class="card-title">Udhav</h5>
+				    	<p class="card-text">Photographer</p>
+				  	</div>
+				   </div>
+				 </div>
+				 <div class="col-lg-3">
+				  <div class="card text-center border-success">
+				  	<img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+				  	<div class="card-body">
+				    	<h5 class="card-title">Udhav</h5>
+				    	<p class="card-text">Photographer</p>
+				  	</div>
+				   </div>
+				 </div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="my-5 py-2" style="background-color: #5cb85c; text-align: center;">
+		<div class="container">
+			<div class="row justify-conetnt-center text-white py-5">
+				<div class="col-lg-12">
+					<h1>Promotion?</h1>
+					<p class="container">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+					<a  class="btn btn-success" href="#">Appointment</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<%- include("./partials/footer") %>

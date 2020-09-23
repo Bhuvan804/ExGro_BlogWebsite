@@ -1,0 +1,298 @@
+<%- include("./partials/header") %>
+
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light py-0">
+        <div class="container py-0">
+            <a class="navbar-brand" href="/"><img src="../../images/NEW LOGO.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse navbar-right" id="navLinks">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item active">
+                <p class="m-0"><button><a class="nav-link py-3" href="/">Home</a></button></p>
+              </li>
+              <li class="nav-item">
+                <p class="m-0"><button><a class="nav-link py-3" href="/blogs">Blog</a></button></p>
+              </li>
+              <li class="nav-item">
+                <p class="m-0"><button><a class="nav-link py-3" href="/about">About</a></button></p>
+              </li>
+              <li class="nav-item">
+                <p class="m-0"><button><a class="nav-link py-3" href="/contact">Contact</a></button></p>
+              </li>
+              <% if(!currentUser){ %>
+              <li class="nav-item">
+                  <p class="m-0"><button><a class="nav-link py-3" href="/login">Login</a></button></p>
+              </li>
+              <li class="nav-item">
+                <p class="m-0"><button><a class="nav-link py-3" href="/register">Sign Up</a></button></p>
+              </li>
+              <% } else { %>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle nav-link py-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="im im-user-settings"></i></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                        <p class="pl-3">Hey, <%= currentUser.firstName %></p>
+                    </li><hr>                          
+                        <li>
+                            <p class="pl-3"><a href="/users/<%= currentUser.id %>">My Account</a></p>
+                        </li><hr>
+                        <li>
+                            <p class="pl-3"><a href="/logout">Logout</a></p>
+                        </li>
+                  </ul>
+                </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container pt-3">
+        <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+    </div>
+
+
+<!-- CAROUSEL -->
+	<section>
+		<div class="carousel" data-flickity='{ "autoPlay": true }'>
+	  		<div class="carousel-cell"><img class="img-fluid" src="../../images/01.jpg"></div>
+	  		<div class="carousel-cell"><img class="img-fluid" src="../../images/02.jpg"></div>
+	  		<div class="carousel-cell"><img class="img-fluid" src="../../images/03.jpg"></div>
+	  		<div class="carousel-cell"><img class="img-fluid" src="../../images/04.jpg"></div>
+	  		<div class="carousel-cell"><img class="img-fluid" src="../../images/05.jpg"></div>
+		</div>
+		<br><br>
+	</section>
+
+	<h1 class="text-center border border-warning mx-4">ASM Photography</h1>
+
+<!-- FLOATING CARDS -->
+	<section>
+		<div class="container">
+			<div class="row justify-content-center">
+			  <div class="col-sm-3 shadow p-0 m-4 bg-white rounded">
+				  <div class="card text-center border-top-0">
+				    <img class="card-img-top img-fluid" src="../../images/shooting.jpg" alt="Card image cap">
+				      <div class="card-body">
+				        <h5 class="card-title"><h3>Shooting</h3></h5>
+				        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				        <a href="#" class="btn btn-success">Explore</a>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-sm-3 shadow p-0 m-4 bg-white rounded">
+					 <div class="card text-center border-top-0">
+					    <img class="card-img-top img-fluid" src="../../images/video.jpg" alt="Card image cap">
+					      <div class="card-body">
+					        <h5 class="card-title"><h3>Videos</h3></h5>
+					        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+					        <a href="#" class="btn btn-success">Explore</a>
+					      </div>
+					    </div>
+				  </div>
+				  <div class="col-sm-3 shadow p-0 m-4 bg-white rounded">
+				    <div class="card text-center border-top-0">
+				       <img class="card-img-top img-fluid" src="../../images/editing.jpg" alt="Card image cap">
+				      	<div class="card-body">
+				        <h5 class="card-title"><h3>Editing</h3></h5>
+				        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				        <a href="#" class="btn btn-success">Explore</a>
+				      </div>
+				    </div>
+			  </div>
+			</div>
+		</div>
+		<br><br>
+	</section>
+
+<!-- CATEGORIES -->
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="justify-content-left">
+						<h2>CATEGORIES</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="btn-right">
+						<a class="btn btn-success" href="#">View All &rarr;</a>
+					</div>
+				</div>
+			</div>
+			<div id="category" class="carousel" data-flickity='{ "autoPlay": true, "groupCells": true, "wrapAround": true}'>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center shadow" style="width: 18rem;">
+					  <img class="card-img-top img-fluid" src="../../images/wild.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <h5 class="card-title">Wild</h5>
+					    <p class="card-text">N Photos</p>
+					    <a href="#" class="btn btn-outline-success">Explore</a>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center shadow" style="width: 18rem;">
+					  <img class="card-img-top img-fluid" src="../../images/nature.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <h5 class="card-title">Nature</h5>
+					    <p class="card-text">N Photos</p>
+					    <a href="#" class="btn btn-outline-success">Explore</a>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center shadow" style="width: 18rem;">
+					  <img class="card-img-top img-fluid" src="../../images/male.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <h5 class="card-title">Portrait</h5>
+					    <p class="card-text">N Photos</p>
+					    <a href="#" class="btn btn-outline-success">Explore</a>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center shadow" style="width: 18rem;">
+					  <img class="card-img-top img-fluid" src="../../images/animal.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <h5 class="card-title">Animal</h5>
+					    <p class="card-text">N Photos</p>
+					    <a href="#" class="btn btn-outline-success">Explore</a>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center shadow" style="width: 18rem;">
+					  <img class="card-img-top img-fluid" src="../../images/landscape.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <h5 class="card-title">Landscape</h5>
+					    <p class="card-text">N Photos</p>
+					    <a href="#" class="btn btn-outline-success">Explore</a>
+					  </div>
+					</div>
+		  		</div>
+			</div>
+		</div><br>
+	</section>
+
+<!-- CHARTS -->
+	<section>
+		<div class="container">
+			<h2>TOP CHARTS</h2>
+			<hr>
+			<h3>WEEKLY</h3>
+			<div id="weekly" class="carousel" data-flickity='{ "autoPlay": true, "groupCells": true, "wrapAround": true}'>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+			</div><br><br>
+
+			<h3>MONTHLY</h3>
+			<div id="weekly" class="carousel" data-flickity='{ "autoPlay": true, "groupCells": true, "wrapAround": true}'>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="carousel-cell">
+		  			<div class="card text-center bg-light" style="width: 18rem;">
+					  <img class="card-img-top" src="../public/images/head.jpg" alt="Card image cap">
+					  <div class="card-body">
+					    <p class="card-text">By <a href="#">Admin</a></p>
+					    <p class="card-text">N likes</p>
+					  </div>
+					</div>
+		  		</div>
+			</div><br><br>
+		</div>
+		<hr>
+	</section>
+	
+<%- include("./partials/footer") %>

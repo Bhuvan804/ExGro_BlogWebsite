@@ -1,0 +1,162 @@
+@media only screen and (max-width: 950px) {
+	.vieww{
+		visibility: hidden;
+	}
+	.vieww h1{
+		visibility: visible;
+	}
+}
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Quantico', sans-serif;
+}
+p{
+	font-family: 'Montserrat', sans-serif;
+}
+button{
+	border: none;
+	background: transparent;
+	height: 100%;
+	transition: all 0.3s;
+	width: 7rem;
+}
+button:hover{
+	background-color: #5cb85c; 
+}
+.active{
+	border-bottom: 4px solid #5cb85c
+}
+.carousel .carousel-cell{
+	height: 30rem;
+}
+.flickity-page-dots {
+  bottom: -22px !important;}
+.flickity-page-dots .dot {
+  height: 4px;
+  width: 40px;
+  margin: 0;
+  border-radius: 0;
+}
+.card{
+	border: 1px solid white;
+	border-top: none;
+	border-top-left-radius: 0px !important;
+	border-top-right-radius: 0px !important;
+}
+.card-img-top{
+	border: 15px solid white;
+	/*border-bottom: none;*/
+	/*padding: 5px;*/
+	/*padding-bottom: 0px;*/
+}
+.btn{
+	padding: 10px;
+	border-radius: 0px;
+}
+.btn-right{
+	text-align: right;
+	padding-top: 20px;
+}
+a .im{
+	font-size: 1rem;
+}
+#category .carousel-cell {
+  width: auto;
+  height: 27rem;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+#category ol{
+	display: none;
+}
+#weekly .carousel-cell{
+	height: auto;
+}
+#weekly .card-img-top, #about .card-img-top{
+	border: none;
+}
+form input{
+	border-radius: 0px;
+}
+.blog .cardimg{
+	visibility: hidden;
+	opacity: 0;
+}
+.blog .card:hover .cardimg{
+	visibility: visible !important;
+	opacity: 10;
+	transition: opacity 1s ease;
+}
+.blog .card p, .blog .card i{
+	padding: 0px;
+	font-size: 1rem;
+}
+.blogopen img{
+	width: 100%;
+}
+#newpost {
+	text-align: center;
+}
+.profile-sidebar{
+	padding-top: 5rem;
+	text-align: center;
+}
+.profile-sidebar img{
+	width: 130px;
+	height: 130px;
+	margin-bottom: 2rem;
+}
+.profile-sidebar p{
+	border: 1px solid black;
+	padding: 1rem;
+}
+.jumbotron{
+	height: 100%;
+}
+.footer{
+	background-color: black;
+}
+.footer a{
+	color: white;
+}
+.footer h5, a:hover{
+	color: #5cb85c;
+}
+.footer form input{
+	width: 100%;
+	height: 45px;
+	background: transparent;
+	border: 2px solid #5cb85c;
+	padding: 1rem;
+}
+.footer form button{
+	position: absolute;
+	height: 45px;
+	width: 40px;
+	background-color: #5cb85c;
+}
+.footer hr{
+	border-top: 1px solid grey;
+}
+.modal-body li i, #info i{
+	color: #5cb85c;
+	font-size: 1.5rem;
+}
+.modal-body li{
+	color: grey;
+}
+}
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+#delete-form {
+    display: inline;
+}
