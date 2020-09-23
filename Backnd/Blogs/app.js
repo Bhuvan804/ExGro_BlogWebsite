@@ -1,3 +1,4 @@
+
 var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
@@ -10,6 +11,7 @@ var express     = require("express"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
     // expressValidator = require("express-validator"),
+   // expressValidator = require("express-validator"),
     seedDB      = require("./seeds")
     
 //requiring routes
