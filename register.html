@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Express</title>
@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
   </head>
   <body class="" style="background-color: #222c35 !important">
   
@@ -52,69 +52,74 @@
 
       </div>
     </header>
-        
-    
-    <div class="site-section">
-      <h1 class="text-center">Contact Us</h1>
-      <div class="container">
-        <hr>
-        <div class="row">
 
-          <div class="col-md-6">  
-            <div class="p-4 mb-3 text-center">
-              <img src="images/logo1.png" class="w-50">
-              <p>We never liked the idea of being perfect and always had inclination towards what is real,raw because it gives us a story to tell and above all it satisfies our soul so we would love to know about how you are struggling to get something or trying to achieve your dream for. Write us out to know the inside of world of express and join us in our mission of making millions of people smile.</p>
-            </div>
-
-          </div>
-          <div class="col-md-6 mb-5" data-aos="flip-left" data-aos-duration="1000">
-
-            
-            <form action="#" class="p-4 card contact-form">
-              <div class="row form-group">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <label for="firstName">First Name</label>
-                  <input type="text" id="firstName" class="form-control rounded" required>
+<div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <div class="row justify-content-center pt-5">
+                    <h1>Welcome Folks !</h1>
+                    <p class="text-center container">Sign up to the world of Express to let us know what you really feel about it <br>We would love to know your views about our blogs <i class="im im-smiley-o"></i></p>
+                    <img src="images/logo1.png" class="w-50">
                 </div>
-                <div class="col-md-6">
-                  <label for="lname">Last Name</label>
-                  <input type="text" id="lastName" class="form-control rounded">
-                </div>
-              </div>
-              <div class="row form-group">
                 
-                <div class="col-md-12">
-                  <label for="email">Email</label> 
-                  <input type="email" id="email" class="form-control rounded" required>
-                </div>
-              </div>
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <label for="subject">Subject</label> 
-                  <input type="subject" id="subject" class="form-control rounded" required>
-                </div>
-              </div>
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <label for="message">Message</label> 
-                  <textarea name="message" id="message" cols="30" rows="7" class="form-control rounded" required></textarea>
-                </div>
-              </div>
-              <div class="row form-group">
-                <div class="col-md-12 pt-2">
-                  <button type="submit" class="btn btn-outline-secondary py-2 px-4 border-0"><i class="im im-paperplane"></i></button>
-                </div>
-              </div>  
-            </form>
-          </div>
-
-
-          
+            </div>
+            <div class="col-lg-6" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="card container py-5 mb-5 bg-dark">
+        <div class="row justify-content-center">
+            <h1>Sign Up!</h1>
         </div>
-      </div>
+        <div class="row justify-content-center">
+            <div class="login-form-1">
+                <form id="register-form" class="text-left" action="/register" method="POST">
+                    <div class="login-form-main-message"></div>
+                    <div class="main-login-form">
+                        <div class="login-group">
+                            <div class="form-group">
+                                <label for="firstName" class="sr-only">First Name</label>
+                                <p><input type="text" class="form-control py-2" id="firstname" name="firstName" placeholder="First Name" required></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="sr-only">Last Name</label>
+                                <p><input type="text" class="form-control py-2" id="lastName" name="lastName" placeholder="Last Name"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="sr-only">Username</label>
+                                <p><input type="text" class="form-control py-2" id="username" name="username" placeholder="Username" required></p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email</label>
+                                <p><input type="email" class="form-control py-2" id="email" name="email" placeholder="Email" required></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="sr-only">Password</label>
+                                <p><input type="password" class="form-control py-2" id="password" name="password" placeholder="Password" required></p>
+                            </div>
+                            <!-- <div class="custom-file">
+                                <input type="file" name="image" accept="image/*" class="custom-file-input" id="image" aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Avatar</label>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="bio" class="sr-only">Bio</label>
+                                <p><input type="text" class="form-control py-2" id="bio" name="bio" placeholder="Something about you..."></p>
+                            </div>
+                            <div class="form-group login-group-checkbox">
+                                <p class="text-muted">By signing up I agree with <a href="#">terms & conditions</a></p>
+                            </div>
+                        </div>
+                        <button type="submit" class="login-button"><i class="im im-angle-right"></i></button>
+                    </div>
+                    <div class="formtext container pt-2 text-center">
+                        <p class="text-muted">Already have an account? <a href="/login">Login</a></p>
+                    </div>
+                </form>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
     </div>
-    
-    
+
     <div class="site-footer">
       <div class="container">
         <div class="row mb-5">
@@ -163,6 +168,7 @@
     
   </div>
 
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -170,11 +176,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
 
   <script src="js/main.js"></script>
-   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
-  
   
 
 

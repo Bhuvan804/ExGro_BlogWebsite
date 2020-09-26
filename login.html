@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Express</title>
@@ -52,70 +52,50 @@
 
       </div>
     </header>
-        
-    
-    <div class="site-section">
-      <h1 class="text-center">Contact Us</h1>
-      <div class="container">
-        <hr>
-        <div class="row">
 
-          <div class="col-md-6">  
-            <div class="p-4 mb-3 text-center">
-              <img src="images/logo1.png" class="w-50">
-              <p>We never liked the idea of being perfect and always had inclination towards what is real,raw because it gives us a story to tell and above all it satisfies our soul so we would love to know about how you are struggling to get something or trying to achieve your dream for. Write us out to know the inside of world of express and join us in our mission of making millions of people smile.</p>
+
+ <div class="container">
+        <div class="row mt-5">
+             <div class="col-md-6 order-2 order-md-1">
+                <div class="row justify-content-center pt-3 text-center">
+                    <h1>Hi, Nice to see you again</h1>
+                    <p class="text-center">You may fall for beauty but you stayed for words</p>
+                    <img src="images/logo1.png" class="w-50">
+                </div>
             </div>
-
-          </div>
-          <div class="col-md-6 mb-5" data-aos="flip-left" data-aos-duration="1000">
-
-            
-            <form action="#" class="p-4 card contact-form">
-              <div class="row form-group">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <label for="firstName">First Name</label>
-                  <input type="text" id="firstName" class="form-control rounded" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="lname">Last Name</label>
-                  <input type="text" id="lastName" class="form-control rounded">
-                </div>
-              </div>
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label for="email">Email</label> 
-                  <input type="email" id="email" class="form-control rounded" required>
-                </div>
-              </div>
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <label for="subject">Subject</label> 
-                  <input type="subject" id="subject" class="form-control rounded" required>
-                </div>
-              </div>
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <label for="message">Message</label> 
-                  <textarea name="message" id="message" cols="30" rows="7" class="form-control rounded" required></textarea>
-                </div>
-              </div>
-              <div class="row form-group">
-                <div class="col-md-12 pt-2">
-                  <button type="submit" class="btn btn-outline-secondary py-2 px-4 border-0"><i class="im im-paperplane"></i></button>
-                </div>
-              </div>  
-            </form>
-          </div>
-
-
-          
+            <div class="col-md-6 order-1 order-md-2" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="card container bg-dark py-5 mb-5">
+            <h1 class="row justify-content-center">Login</h1>
+            <div class="row justify-content-center">
+            <div class="login-form-1">
+                <form id="login-form" class="text-left" action="/login" method="POST">
+                    <div class="login-form-main-message"></div>
+                    <div class="main-login-form">
+                        <div class="login-group">
+                            <div class="form-group">
+                                <label for="username" class="sr-only">Username</label>
+                                <p><input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="sr-only">Password</label>
+                                <p><input type="password" class="form-control" id="password" name="password" placeholder="Password"></p>
+                            </div>
+                        </div>
+                        <button type="submit" class="login-button"><i class="im im-angle-right pb-2"></i></button>
+                    </div>
+                    <div class="formtext container pt-3 text-center">
+                        <p class="text-muted">Forgot your password? <a href="/forgot">click here</a></p>
+                        <p class="text-muted">New user? <a href="/register">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
+        </div>
+            </div>
+        </div>
     </div>
-    
-    
-    <div class="site-footer">
+
+     <div class="site-footer">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-4">
@@ -170,7 +150,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
 
   <script src="js/main.js"></script>
-   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
