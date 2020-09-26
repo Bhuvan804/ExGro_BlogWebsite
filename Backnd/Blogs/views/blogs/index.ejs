@@ -1,115 +1,55 @@
 <%- include("../partials/header") %> 
 
-<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light py-0">
-        <div class="container py-0">
-            <a class="navbar-brand" href="/"><img src="../../images/NEW LOGO.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-          <div class="collapse navbar-collapse navbar-right" id="navLinks">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/">Home</a></button></p>
-              </li>
-              <li class="nav-item active">
-                <p class="m-0"><button><a class="nav-link py-3" href="/blogs">Blog</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/about">About</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/contact">Contact</a></button></p>
-              </li>
-              <% if(!currentUser){ %>
-              <li class="nav-item">
-                  <p class="m-0"><button><a class="nav-link py-3" href="/login">Login</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/register">Sign Up</a></button></p>
-              </li>
-              <% } else { %>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle nav-link py-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="im im-user-settings"></i></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <p class="pl-3">Hey, <%= currentUser.firstName %></p>
-                    </li><hr>                          
-                        <li>
-                            <p class="pl-3"><a href="/users/<%= currentUser.id %>">My Account</a></p>
-                        </li><hr>
-                        <li>
-                            <p class="pl-3"><a href="/logout">Logout</a></p>
-                        </li>
-                  </ul>
-                </li>
-              <% } %>
-            </ul>
-          </div>
-        </div>
-    </nav>
+<head>
+  <style type="text/css">
+    .checked{
+      color: orange;
+    }
+    .editbox{
+      border: 0px !important;
+    }
+  </style>
+</head>
 
-    <div class="container pt-3">
-        <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
+ <div class="site-section">
+      <div class="container">
+        <div class="text-center">
+          <h1 id="greet"></h1>
         </div>
+          <hr>
+          <div class="site-section">
+      <div class="container blogs">
+        <div class="row">
+          <div class="col-md-12 col-lg-12">
+            <div class="row">
+              <h2 class="m-0">Our Blogs</h2>
+              <form action="/blogs" method="GET" class="searchform ml-auto">
+            <input type="text" name="search" placeholder="Search...">
+            <button><i class="im im-magnifier"></i></button>
+          </form>
+          <% if(currentUser){ %>
+           <a href="/blogs/new" class="btn btn-sm btn-secondary ml-2"><p class="m-0 mt-2">New POST</p></a>
         <% } %>
-        <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
-    </div>
-
-
-<div class="container">
-  <header class="jumbotron p-0 pb-4">
-         <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 bg-transparent">
-                        <li class="breadcrumb-item"><a href="/"><p class="m-0">Home</p></a></li>
-                        <li class="breadcrumb-item" aria-current="page"><p class="m-0">Blog</p></li>
-                    </ol>
-                    <hr class="mt-0">
-                </nav>
+          
             </div>
 
-            <div class="container">
-                <div class="container">
-                    <div class="row post">
-                        <div class="col-lg-6">
-                            <p>
-                              <form action="/blogs" method="GET" class="form-inline">
-                                <div class="form-group">
-                                  <p><input type="text" name="search" placeholder="Search for posts..." class="form-control"></p>
-                                  <!-- <p><small class="form-text text-muted">Press Enter to search</small></p> -->
-                                  <p><button type="submit" class="btn btn-warning">Search</button></p>
-                                </div>
-                              </form>
-                             </p>
-                        </div>
-                            <div class="col-lg-6 text-right">
-                                <a href="/blogs/new" class="btn btn-sm btn-warning"><p><i class="im im-plus"></i> POST</p></a>
-                            </div>
-                    </div>
-                </div>
-            </div>
-              
-            
-         </div>
-     </header>
-     
-     <div class="container">
-        <div class="card-columns blog my-3">
-            <% campgrounds.forEach(function(campground){ %>
-            <div class="card text-white">
-                <img class="card-img" src="<%= campground.image %>" alt="Card image">
-                <!-- <img class="card-img altimage" src="images/head.jpg"> -->
-                  <div class="cardimg">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title"><%= campground.name %></h5>
-						
-						<% if (campground.rating === 0) { %>
+
+            <% campgrounds.reverse().forEach(function(campground){ %>
+            <div class="card mt-3 border-0 shadow" data-aos="zoom-out-up">
+              <div class="row p-3">
+              <div class="col-md-3">
+                <a href="/blogs/<%= campground._id %>"><img src="<%= campground.image %>"></a>
+              </div>
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a href="/blogs/<%= campground._id %>"><h3 class="text-black mb-0"><%= campground.name %></h3></a>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <a href="/blogs/<%= campground._id %>" class="btn btn-outline-secondary rounded openbtn"><p class="m-0">Open &rarr;</p></a>
+                  </div>
+                  <div class="container">
+                  <% if (campground.rating === 0) { %>
                     <p><em class="text-muted">No reviews yet.</em></p>
                     <% } else { %>
                     <span class="fa fa-star checked"></span>
@@ -118,14 +58,36 @@
                     <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
                     <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
                     <% } %>
-						       <p><a href="/blogs/<%= campground._id %>">View</a></p>
-                    </div>
                   </div>
-                </div>
-                </a>
-                <% }) %>
+                </div>                
+                <p><%= campground.outside %>
+                </p>
+              </div>
             </div>
+            </div>
+            <% }) %>
+
+          </div>
+
+
+
+          <!-- <div class="col-md-12 col-lg-3 text-center">
+            <img src="images/logo1.png">
+            <p>When your mind is so full of thoughts that each cross section in it seems to be blocked, let a pen become your brush and a piece of paper your canvas. This is when your words become you. It is easy to pen down your opinions and emotions in those pieces of paper rather than speaking them out loud. Express for us is just that piece of paper or our personal notes where we aim on pouring our heart out so that it would make it light and breezy. Moreover, We feel words lose their essence when spoken out but when penned on a piece of paper they have the power to reach millions of hearts. Express will focus on our fascination with words so that when you read you lure into your thoughts and are caught in a whirlwind of emotions.</p>
+
+            <div class="row justify-content-around m-4">
+              <i class="im im-facebook"></i>
+              <i class="im im-instagram"></i>
+              <i class="im im-snapchat"></i>
+            </div>
+          </div> -->
+
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
 
      
 <div class="container">
@@ -135,13 +97,13 @@
         <% if (current == 1) { %>
         <li class="disabled"><a>First</a></li>
         <% } else { %>
-        <li><a href="/campgrounds<%if(search){%>?search=<%=search%><%}%>">First</a></li>
+        <li><a href="/blogs<%if(search){%>?search=<%=search%><%}%>">First</a></li>
         <% } %>
  
         <% if (current == 1) { %>
         <li class="disabled"><a>«</a></li>
         <% } else { %>
-        <li><a href="/campgrounds?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
+        <li><a href="/blogs?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
         <% } %>
  
         <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
@@ -152,7 +114,7 @@
         <% if (i == current) { %>
         <li class="active"><a><%= i %></a></li>
         <% } else { %>
-        <li><a href="/campgrounds?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
+        <li><a href="/blogs?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
         <% } %>
         <% if (i == Number(current) + 4 && i < pages) { %>
         <li class="disabled"><a>...</a></li>
@@ -162,13 +124,13 @@
         <% if (current == pages) { %>
         <li class="disabled"><a>»</a></li>
         <% } else { %>
-        <li><a href="/campgrounds?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
+        <li><a href="/blogs?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
         <% } %>
  
         <% if (current == pages) { %>
         <li class="disabled"><a>Last</a></li>
         <% } else { %>
-        <li><a href="/campgrounds?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
+        <li><a href="/blogs?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
         <% } %>
     </ul>
     <% } %>
@@ -178,4 +140,5 @@
     
     </div>
 
-<%- include("../partials/footer") %>
+ 
+ <%- include("../partials/footer") %>

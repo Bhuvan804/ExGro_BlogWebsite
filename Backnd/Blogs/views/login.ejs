@@ -1,78 +1,16 @@
 <%- include ("./partials/header") %> 
 
-<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light py-0">
-        <div class="container py-0">
-            <a class="navbar-brand" href="/"><img src="../../images/NEW LOGO.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-          <div class="collapse navbar-collapse navbar-right" id="navLinks">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/">Home</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/blogs">Blog</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/about">About</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/contact">Contact</a></button></p>
-              </li>
-              <% if(!currentUser){ %>
-              <li class="nav-item active">
-                  <p class="m-0"><button><a class="nav-link py-3" href="/login">Login</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/register">Sign Up</a></button></p>
-              </li>
-              <% } else { %>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle nav-link py-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="im im-user-settings"></i></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <p class="pl-3">Hey, <%= currentUser.firstName %></p>
-                    </li><hr>                          
-                        <li>
-                            <p class="pl-3"><a href="/users/<%= currentUser.id %>">My Account</a></p>
-                        </li><hr>
-                        <li>
-                            <p class="pl-3"><a href="/logout">Logout</a></p>
-                        </li>
-                  </ul>
-                </li>
-              <% } %>
-            </ul>
-          </div>
-        </div>
-    </nav>
-
-    <div class="container pt-3">
-        <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
-    </div>
-
-
-    <div class="container">
-        <div class="row">
+ <div class="container">
+        <div class="row mt-5">
              <div class="col-md-6 order-2 order-md-1">
-                <div class="row justify-content-center pt-3">
-                    <h1>Welcome to ASM!</h1>
-                    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                    <img src="../images/NEW LOGO.png">
+                <div class="row justify-content-center pt-3 text-center">
+                    <h1>Hi, Nice to see you again</h1>
+                    <p class="text-center">You may fall for beauty but you stayed for words</p>
+                    <img src="images/logo1.png" class="w-50">
                 </div>
             </div>
-            <div class="col-md-6 order-1 order-md-2">
-                <div class="jumbotron container">
+            <div class="col-md-6 order-1 order-md-2" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="card container bg-dark py-5 mb-5">
             <h1 class="row justify-content-center">Login</h1>
             <div class="row justify-content-center">
             <div class="login-form-1">
@@ -91,9 +29,9 @@
                         </div>
                         <button type="submit" class="login-button"><i class="im im-angle-right pb-2"></i></button>
                     </div>
-                    <div class="formtext container text-muted pt-3 text-center">
-                        <p>Forgot your password? <a href="/forgot">click here</a></p>
-                        <p>New user? <a href="/register">Sign Up</a></p>
+                    <div class="formtext container pt-3 text-center">
+                        <p class="text-muted">Forgot your password? <a href="/forgot">click here</a></p>
+                        <p class="text-muted">New user? <a href="/register">Sign Up</a></p>
                     </div>
                 </form>
             </div>
@@ -102,6 +40,6 @@
             </div>
         </div>
     </div>
-        
+
         
 <%- include ("./partials/footer") %>

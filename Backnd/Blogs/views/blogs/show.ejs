@@ -1,102 +1,115 @@
 <%- include("../partials/header") %>
+ 
+<head>  <style type="text/css">
+  .checked {
+    color: orange !important;
+}
+div.stars {
+  width: 270px;
+  display: inline-block;
+}
 
-<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light py-0">
-        <div class="container py-0">
-            <a class="navbar-brand" href="/"><img src="../../images/NEW LOGO.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-          <div class="collapse navbar-collapse navbar-right" id="navLinks">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/">Home</a></button></p>
-              </li>
-              <li class="nav-item active">
-                <p class="m-0"><button><a class="nav-link py-3" href="/blogs">Blog</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/about">About</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/contact">Contact</a></button></p>
-              </li>
-              <% if(!currentUser){ %>
-              <li class="nav-item">
-                  <p class="m-0"><button><a class="nav-link py-3" href="/login">Login</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/register">Sign Up</a></button></p>
-              </li>
-              <% } else { %>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle nav-link py-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="im im-user-settings"></i></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <p class="pl-3">Hey, <%= currentUser.firstName %></p>
-                    </li><hr>                          
-                        <li>
-                            <p class="pl-3"><a href="/users/<%= currentUser.id %>">My Account</a></p>
-                        </li><hr>
-                        <li>
-                            <p class="pl-3"><a href="/logout">Logout</a></p>
-                        </li>
-                  </ul>
-                </li>
-              <% } %>
-            </ul>
+input.star { display: none; }
+
+label.star {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before { color: #F62; }
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+.editbox input{
+      border-radius: 1.25rem;
+    }
+    .editbox textarea{
+      border-radius: 1.25rem;
+    }
+    .editbox{
+      border: 0px !important;
+    }
+</style></head>
+
+    <div class="site-cover overlay single-page" style="background-image: url('<%= campground.image %>');">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+              <h1 class="mb-4"><%= campground.name %></h1>
+              <div class="post-meta align-items-center text-center">
+                <em><span class="d-inline-block mt-1">By <%= campground.author.firstName %> <%= campground.author.lastName %></span>
+                <span>&nbsp;-&nbsp; <%= moment(campground.createdAt).fromNow() %></span></em>
+              </div>
+            </div>
           </div>
         </div>
-    </nav>
-
-    <div class="container pt-3">
-        <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
+      </div>
     </div>
+    
+    <section class="site-section py-lg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 main-content">
+            
+            <div>
+              <p><%= campground.description %></p>
+              <div class="blogs mb-3">
+                <img src="<%= campground.image %>">
+              </div>
+            </div>
 
-<div class="container">
-    <header class="jumbotron p-0">
-         <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 bg-transparent">
-                        <li class="breadcrumb-item"><a href="/"><p class="m-0">Home</p></a></li>
-                        <li class="breadcrumb-item"><a href="/blogs"><p class="m-0">Blog</p></a></li>
-                        <li class="breadcrumb-item" aria-current="page"><p class="m-0"><%= campground.name %></p></li>
-                    </ol>
-                    <!-- <hr class="mt-0"> -->
-                </nav>
-        </div>
-    </header>
-        
-            <div class="thumbnail blogopen">
-                <div class="row justify-content-center">
-                    <img class="img-responsive" src="<%= campground.image %>">    
+          </div>
+
+          <!-- END main-content -->
+
+          <div class="col-md-12 col-lg-4 sidebar blogs">
+            <!-- END sidebar-box -->
+            <div class="card border-0 shadow">
+              <div class="bio text-center container">
+                <div class="bio-body">
+                  <h2 class="text-black mt-2"><%= campground.author.firstName %></h2>
+                  <p class="mb-4"><%= campground.author.bio %></p>
+                  <p><a href="/users/<%= campground.author.id %>" class="btn btn-outline-secondary btn-sm rounded px-4 mb-4">View Profile</a></p>
                 </div>
-                
-                <div class="caption-full">
-                    <h2><a><%=campground.name%></a></h2>
-        <p class="description"><%= campground.description %></p>
-					
-		
-        <p>
-          <em>Posted by: <a href="/users/<%= campground.author.id %>"><%= campground.author.firstName %></a>, <%= moment(campground.createdAt).fromNow() %></em>
-        </p>
-            <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-                <!-- <a class="btn btn-xs btn-secondary text-white" href="/blogs/<%= campground._id %>/edit">Edit</a> -->
+              </div>
+            </div>
+            <!-- END sidebar-box -->
+            <div class="container">
+              <div class="row justify-content-center mt-3">
+                <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                <a class="btn btn-xs btn-secondary text-white mr-1" href="/blogs/<%= campground._id %>/edit">Edit</a>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
                 <% }%>
-                </div>
+              </div>
             </div>
         </div>
-        <hr>
-          <div class="well container">
+      </div>
+    </section>
+
+                
+
+    <section>
+      <div class="container">
+        <div class="well container">
               <div class="text-left">
                 <h2>Rate:</h2>
                   <% if(!currentUser) { %>
@@ -107,15 +120,15 @@
                       <div class="stars">
                         <form action="/blogs/<%= campground._id %>/reviews" method="POST">
                           <fieldset class="starability-basic form-group" id="rating">
-<input id="rate" type="range" name="review[rating]" list="flame" min="1" max="5" step="1" value="1" style="width: 100%">
-<datalist id="flame">
+<!-- <input id="rate" type="range" name="review[rating]" list="flame" min="1" max="5" step="1" value="1" style="width: 100%"> -->
+<!-- <datalist id="flame">
   <option class="star star-5" id="first-rate5" value="5"></option>
   <option class="star star-4" id="first-rate4" value="4"></option>
   <option class="star star-3" id="first-rate3" value="3"></option>
   <option class="star star-2" id="first-rate2" value="2"></option>
   <option class="star star-1" id="first-rate1" value="1"></option>
-</datalist>
-                            <!-- <input class="star star-5" id="first-rate5" type="radio" name="review[rating]" value="5"/>
+</datalist> -->
+                            <input class="star star-5" id="first-rate5" type="radio" name="review[rating]" value="5"/>
                             <label class="star star-5" for="first-rate5"></label>
                             <input class="star star-4" id="first-rate4" type="radio" name="review[rating]" value="4" />
                             <label class="star star-4" for="first-rate4"></label>
@@ -124,8 +137,8 @@
                             <input class="star star-2" id="first-rate2" type="radio" name="review[rating]" value="2" />
                             <label class="star star-2" for="first-rate2"></label>
                             <input class="star star-1" id="first-rate1" type="radio" name="review[rating]" value="1" />
-                            <label class="star star-1" for="first-rate1"></label> -->
-                            <p><button class="btn btn-warning" <% if (currentUser && campground.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>>Submit</button>
+                            <label class="star star-1" for="first-rate1"></label>
+                            <p><button class="btn btn-warning mb-2" <% if (currentUser && campground.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>>Submit</button>
                           </fieldset>
                           </form>
                         </div>
@@ -133,16 +146,16 @@
                 <% } %>
                </div>
         <div class="container">
-			 <!--Review section-->
-            <div class="thumbnail border border-warning">
-                <div class="caption-full">
+       <!--Review section-->
+            <div class="thumbnail">
+                <div class="caption-full text-white">
 
                     <% if (campground.rating === 0) { %>
                     <p class="m-0">
                         <em class="text-muted">No reviews yet.</em>
                     </p>
                     <% } else { %>
-                    <p>
+                    <p class="my-3">
                         <span class="im im-star checked"></span>
                         <span class="im im-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
                         <span class="im im-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
@@ -160,7 +173,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <%- '<span class="im im-star checked"></span>'.repeat(review.rating) %><%- '<span class="im im-star"></span>'.repeat(5 - review.rating) %>
-                            <div>Review by: <strong><%= review.author.username %></strong></div>
+                            <div>Review by: <a href="/users/<%= campground.author.id %>"><strong><%= review.author.username %></strong></a></div>
                             <span><em><%= review.updatedAt.toDateString() %></em></span>
                         </div>
                         <div class="col-md-9">
@@ -184,29 +197,30 @@
                     <% } %> 
                 </div>
             </div>
-			
-            <!--COMMENT SECTION START-->
-            <div class="well">
+          </div>
+          <hr>  
+          <div class="container">
+          <div class="well">
               <!--Setting up the add new comment button that is used for collapsing-->
               <div class="text-right">
-                <p><a class="btn btn-warning pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment"><i class="im im-plus" aria-hidden="true"></i> Add new comment</a></p>
+                <p><a class="btn btn-warning pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment"><i class="im im-plus" aria-hidden="true"></i><span id="commentnew">Add new comment</span></a></p>
               </div>
               <!--Comment section title-->
                   <h2>Comments <i class="im im-speech-bubble-comment" aria-hidden="true"></i></h2>
 
                   <!--Collapse Add a comment form START-->
                   <div class="collapse" id="collapseComment">
-                    <div class="well container jumbotron py-3" style="border-left: 5px solid #5cb85c;">
+                    <div class="well container card py-3" style="border-left: 5px solid #5cb85c;">
                         <% if(!currentUser) { %>
                       <p>You need to be logged in to do that. <a href="/login">Click here</a> to go to the login page.</p>
                         <% } %>
                         <% if(currentUser) { %>
-                      <h4><p>Write your comment <i class="im im-pencil" aria-hidden="true"></i></p></h4>
+                      <h4><p class="text-black">Write your comment <i class="im im-pencil" aria-hidden="true"></i></p></h4>
                       <form id="add-comment-form" action="/blogs/<%= campground._id %>/comments" method="POST">
-                        <div class="form-group">
-                          <p><input class="form-control" type="text" disabled value="<%= currentUser.username %>"></p>
+                        <div class="form-group editbox py-2">
+                          <p><input class="form-control" type="text" disabled value="<%= currentUser.firstName %>"></p>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group editbox py-2">
                           <p><textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="3" cols="70"></textarea></p>
                         </div>
                         <div class="form-group">
@@ -230,7 +244,7 @@
                           <% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
                         <!--If the current user owns the comment, change the color of the user icon-->
                         <!-- <i class="im im-user-circle" aria-hidden="true"></i> -->
-                        <p><strong><a href="/users/<%= comment.author.id %>"><%= comment.author.firstName %></a>, 
+                        <p><strong><a href="/users/<%= comment.author.id %>"><%= comment.author.firstName %></a>
                           <% } else { %>
                         <!--Else just display it black-->
                         <!-- <i class="im im-user-circle" aria-hidden="true"></i> -->
@@ -249,13 +263,13 @@
                               <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h3 class="modal-title" id="deleteCommentModalTitle">Delete Comment</h3>
+                                    <h3 class="modal-title text-black" id="deleteCommentModalTitle">Delete Comment</h3>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    <p>Are you sure you want to delete this comment?</p>
+                                    <p class="text-black">Are you sure you want to delete this comment?</p>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -269,13 +283,13 @@
                             <!-- end of delete comment modal -->
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteCommentModal">Delete</button>
                           <div class="collapse" id="collapseEdit<%= comment._id %>">
-                            <div class="well container jumbotron py-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
-                              <h4><p>Edit your comment <i class="im im-pencil" aria-hidden="true"></i></p></h4>
+                            <div class="well container card py-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+                              <h4><p class="text-black">Edit your comment <i class="im im-pencil" aria-hidden="true"></i></p></h4>
                               <form id="edit-comment-form<%= comment._id %>" action="/blogs/<%= campground._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
-                                <div class="form-group">
+                                <div class="form-group editbox py-2">
                                   <p><input class="form-control" type="text" disabled value="<%= currentUser.firstName %>"></p>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group editbox py-2">
                                   <p><textarea class="form-control" name="comment[text]" placeholder="Your comment text..." form="edit-comment-form<%= comment._id %>" rows="3" cols="70"><%= comment.text %></textarea></p>
                                 </div>
                                 <div class="form-group">
@@ -290,23 +304,24 @@
                       </div>
                         <% }) %>
                     </div>
-<!--COMMENT SECTION END-->
-        </div>
-    </div>
 
-<!-- delete modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+      </div>
+      <!-- <hr> -->
+    </section>
+
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="deleteModalTitle"><%= campground.name %></h3>
+        <h3 class="modal-title text-black" id="deleteModalTitle"><%= campground.name %></h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete this post?</p>
-        <p>This can't be undone.</p>
+        <p class="text-black">Are you sure you want to delete this post?</p>
+        <p class="text-black">This can't be undone.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -317,6 +332,5 @@
     </div>
   </div>
 </div>
-
 
 <%- include("../partials/footer") %>

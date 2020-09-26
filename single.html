@@ -1,84 +1,66 @@
  <!DOCTYPE html>
 <html>
   <head>
-    <title>Mini Blog</title>
+    <title>Express</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/aos.css">
-
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
+  <body class="" style="background-color: #222c35 !important">
   
+
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
       <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
+        <div class="site-mobile-menu-close">
+          <div><a href="#"><i class="im im-x-mark js-menu-toggle"></i></a></div>
         </div>
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
     
-    <header class="site-navbar" role="banner">
-      <div class="container-fluid">
+    <header class="site-navbar" role="banner" class="fixed-top">
+      <div class="container">
         <div class="row align-items-center">
-          
-          <div class="col-12 search-form-wrap js-search-form">
-            <form method="get" action="#">
-              <input type="text" id="s" class="form-control" placeholder="Search...">
-              <button class="search-btn" type="submit"><span class="icon-search"></span></button>
-            </form>
-          </div>
 
           <div class="col-4 site-logo">
-            <a href="index.html" class="text-black h2 mb-0">Mini Blog</a>
+            <a class="nav-brand" href="index.html"><img class="img-fluid" src="images/image.png" alt="Home" id="navimg"></a>
           </div>
 
           <div class="col-8 text-right">
             <nav class="site-navigation" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="category.html">Politics</a></li>
-                <li><a href="category.html">Tech</a></li>
-                <li><a href="category.html">Entertainment</a></li>
-                <li><a href="category.html">Travel</a></li>
-                <li><a href="category.html">Sports</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-
-                <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="register.html">Sign Up</a></li>
               </ul>
             </nav>
-            <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a></div>
+            <div><a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><i class="im im-menu"></i></a></div>
           </div>
 
       </div>
     </header>
         
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/img_2.jpg');">
+    <div class="site-cover overlay single-page" style="background-image: url('<%= campground.image %>');">
       <div class="container">
-        <div class="row same-height justify-content-center">
+        <div class="row justify-content-center">
           <div class="col-md-12 col-lg-10">
             <div class="post-entry text-center">
-              <span class="post-category text-white bg-success mb-3">Nature</span>
-              <h1 class="mb-4"><a href="#">The AI magically removes moving objects from videos.</a></h1>
+              <h1 class="mb-4"><%= campground.name %></h1>
               <div class="post-meta align-items-center text-center">
-                <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-                <span class="d-inline-block mt-1">By Carrol Atkinson</span>
-                <span>&nbsp;-&nbsp; February 10, 2019</span>
+                <span class="d-inline-block mt-1">By <%= campground.author.firstName %> <%= campground.author.lastName %></span>
+                <span>&nbsp;-&nbsp; <%= moment(campground.createdAt).fromNow() %></span>
               </div>
             </div>
           </div>
@@ -88,149 +70,13 @@
     
     <section class="site-section py-lg">
       <div class="container">
-        
-        <div class="row blog-entries element-animate">
-
+        <div class="row">
           <div class="col-md-12 col-lg-8 main-content">
             
-            <div class="post-content-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium nam quas inventore, ut iure iste modi eos adipisci ad ea itaque labore earum autem nobis et numquam, minima eius. Nam eius, non unde ut aut sunt eveniet rerum repellendus porro.</p>
-            <p>Sint ab voluptates itaque, ipsum porro qui obcaecati cumque quas sit vel. Voluptatum provident id quis quo. Eveniet maiores perferendis officia veniam est laborum, expedita fuga doloribus natus repellendus dolorem ab similique sint eius cupiditate necessitatibus, magni nesciunt ex eos.</p>
-            <p>Quis eius aspernatur, eaque culpa cumque reiciendis, nobis at earum assumenda similique ut? Aperiam vel aut, ex exercitationem eos consequuntur eaque culpa totam, deserunt, aspernatur quae eveniet hic provident ullam tempora error repudiandae sapiente illum rerum itaque voluptatem. Commodi, sequi.</p>
-            <div class="row mb-5 mt-5">
-              <div class="col-md-12 mb-4">
-                <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid rounded">
-              </div>
-              <div class="col-md-6 mb-4">
-                <img src="images/img_2.jpg" alt="Image placeholder" class="img-fluid rounded">
-              </div>
-              <div class="col-md-6 mb-4">
-                <img src="images/img_3.jpg" alt="Image placeholder" class="img-fluid rounded">
-              </div>
-            </div>
-            <p>Quibusdam autem, quas molestias recusandae aperiam molestiae modi qui ipsam vel. Placeat tenetur veritatis tempore quos impedit dicta, error autem, quae sint inventore ipsa quidem. Quo voluptate quisquam reiciendis, minus, animi minima eum officia doloremque repellat eos, odio doloribus cum.</p>
-            <p>Temporibus quo dolore veritatis doloribus delectus dolores perspiciatis recusandae ducimus, nisi quod, incidunt ut quaerat, magnam cupiditate. Aut, laboriosam magnam, nobis dolore fugiat impedit necessitatibus nisi cupiditate, quas repellat itaque molestias sit libero voluptas eveniet omnis illo ullam dolorem minima.</p>
-            <p>Porro amet accusantium libero fugit totam, deserunt ipsa, dolorem, vero expedita illo similique saepe nisi deleniti. Cumque, laboriosam, porro! Facilis voluptatem sequi nulla quidem, provident eius quos pariatur maxime sapiente illo nostrum quibusdam aliquid fugiat! Earum quod fuga id officia.</p>
-            <p>Illo magnam at dolore ad enim fugiat ut maxime facilis autem, nulla cumque quis commodi eos nisi unde soluta, ipsa eius aspernatur sint atque! Nihil, eveniet illo ea, mollitia fuga accusamus dolor dolorem perspiciatis rerum hic, consectetur error rem aspernatur!</p>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus magni explicabo id molestiae, minima quas assumenda consectetur, nobis neque rem, incidunt quam tempore perferendis provident obcaecati sapiente, animi vel expedita omnis quae ipsa! Obcaecati eligendi sed odio labore vero reiciendis facere accusamus molestias eaque impedit, consequuntur quae fuga vitae fugit?</p>
-            </div>
-
-            
-            <div class="pt-5">
-              <p>Categories:  <a href="#">Food</a>, <a href="#">Travel</a>  Tags: <a href="#">#manila</a>, <a href="#">#asia</a></p>
-            </div>
-
-
-            <div class="pt-5">
-              <h3 class="mb-5">6 Comments</h3>
-              <ul class="comment-list">
-                <li class="comment">
-                  <div class="vcard">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>Jean Doe</h3>
-                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply rounded">Reply</a></p>
-                  </div>
-                </li>
-
-                <li class="comment">
-                  <div class="vcard">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>Jean Doe</h3>
-                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply rounded">Reply</a></p>
-                  </div>
-
-                  <ul class="children">
-                    <li class="comment">
-                      <div class="vcard">
-                        <img src="images/person_1.jpg" alt="Image placeholder">
-                      </div>
-                      <div class="comment-body">
-                        <h3>Jean Doe</h3>
-                        <div class="meta">January 9, 2018 at 2:21pm</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                        <p><a href="#" class="reply rounded">Reply</a></p>
-                      </div>
-
-
-                      <ul class="children">
-                        <li class="comment">
-                          <div class="vcard">
-                            <img src="images/person_1.jpg" alt="Image placeholder">
-                          </div>
-                          <div class="comment-body">
-                            <h3>Jean Doe</h3>
-                            <div class="meta">January 9, 2018 at 2:21pm</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                            <p><a href="#" class="reply rounded">Reply</a></p>
-                          </div>
-
-                            <ul class="children">
-                              <li class="comment">
-                                <div class="vcard">
-                                  <img src="images/person_1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                  <h3>Jean Doe</h3>
-                                  <div class="meta">January 9, 2018 at 2:21pm</div>
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                  <p><a href="#" class="reply rounded">Reply</a></p>
-                                </div>
-                              </li>
-                            </ul>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="comment">
-                  <div class="vcard">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>Jean Doe</h3>
-                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply rounded">Reply</a></p>
-                  </div>
-                </li>
-              </ul>
-              <!-- END comment-list -->
-              
-              <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">Leave a comment</h3>
-                <form action="#" class="p-5 bg-light">
-                  <div class="form-group">
-                    <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="website">Website</label>
-                    <input type="url" class="form-control" id="website">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn btn-primary">
-                  </div>
-
-                </form>
+            <div>
+              <p><%= campground.description %></p>
+              <div class="blogs mb-3">
+                <img src="<%= campground.image %>">
               </div>
             </div>
 
@@ -238,211 +84,283 @@
 
           <!-- END main-content -->
 
-          <div class="col-md-12 col-lg-4 sidebar">
-            <div class="sidebar-box search-form-wrap">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="icon fa fa-search"></span>
-                  <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
-                </div>
-              </form>
-            </div>
+          <div class="col-md-12 col-lg-4 sidebar blogs">
             <!-- END sidebar-box -->
-            <div class="sidebar-box">
-              <div class="bio text-center">
-                <img src="images/person_2.jpg" alt="Image Placeholder" class="img-fluid mb-5">
+            <div class="card border-0 shadow">
+              <div class="bio text-center container">
+                <img src="images/head.jpg" alt="Image Placeholder" class="img-fluid my-5">
                 <div class="bio-body">
-                  <h2>Craig David</h2>
-                  <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
-                  <p class="social">
-                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
-                  </p>
+                  <h2 class="text-black"><%= campground.author.firstName %></h2>
+                  <p class="mb-4"><%= campground.author.bio %></p>
+                  <p><a href="/users/<%= campground.author.id %>" class="btn btn-outline-secondary btn-sm rounded px-4 mb-4">View Profile</a></p>
                 </div>
               </div>
-            </div>
-            <!-- END sidebar-box -->  
-            <div class="sidebar-box">
-              <h3 class="heading">Popular Posts</h3>
-              <div class="post-entry-sidebar">
-                <ul>
-                  <li>
-                    <a href="">
-                      <img src="images/img_1.jpg" alt="Image placeholder" class="mr-4">
-                      <div class="text">
-                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                        <div class="post-meta">
-                          <span class="mr-2">March 15, 2018 </span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <img src="images/img_2.jpg" alt="Image placeholder" class="mr-4">
-                      <div class="text">
-                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                        <div class="post-meta">
-                          <span class="mr-2">March 15, 2018 </span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <img src="images/img_3.jpg" alt="Image placeholder" class="mr-4">
-                      <div class="text">
-                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                        <div class="post-meta">
-                          <span class="mr-2">March 15, 2018 </span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                <!-- <a class="btn btn-xs btn-secondary text-white" href="/blogs/<%= campground._id %>/edit">Edit</a> -->
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                <% }%>
             </div>
             <!-- END sidebar-box -->
-
-            <div class="sidebar-box">
-              <h3 class="heading">Categories</h3>
-              <ul class="categories">
-                <li><a href="#">Food <span>(12)</span></a></li>
-                <li><a href="#">Travel <span>(22)</span></a></li>
-                <li><a href="#">Lifestyle <span>(37)</span></a></li>
-                <li><a href="#">Business <span>(42)</span></a></li>
-                <li><a href="#">Adventure <span>(14)</span></a></li>
-              </ul>
-            </div>
-            <!-- END sidebar-box -->
-
-            <div class="sidebar-box">
-              <h3 class="heading">Tags</h3>
-              <ul class="tags">
-                <li><a href="#">Travel</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Freelancing</a></li>
-                <li><a href="#">Travel</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Freelancing</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- END sidebar -->
-
         </div>
       </div>
     </section>
 
-    <div class="site-section bg-light">
+                
+
+    <section>
       <div class="container">
+        <h3>Likes:</h3>
+        <div class="well container">
+              <div class="text-left">
+                <h2>Rate:</h2>
+                  <% if(!currentUser) { %>
+                  <p>You need to be logged in to do that. <a href="/login">Click here</a> to go to the login page.</p>
+                  <% } %>
+                  <% if(currentUser) { %>
+                    <!-- <form action="/blogs/<%= campground._id %>/reviews" method="POST"> -->
+                      <div class="stars">
+                        <form action="/blogs/<%= campground._id %>/reviews" method="POST">
+                          <fieldset class="starability-basic form-group" id="rating">
+<input id="rate" type="range" name="review[rating]" list="flame" min="1" max="5" step="1" value="1" style="width: 100%">
+<datalist id="flame">
+  <option class="star star-5" id="first-rate5" value="5"></option>
+  <option class="star star-4" id="first-rate4" value="4"></option>
+  <option class="star star-3" id="first-rate3" value="3"></option>
+  <option class="star star-2" id="first-rate2" value="2"></option>
+  <option class="star star-1" id="first-rate1" value="1"></option>
+</datalist>
+                            <!-- <input class="star star-5" id="first-rate5" type="radio" name="review[rating]" value="5"/>
+                            <label class="star star-5" for="first-rate5"></label>
+                            <input class="star star-4" id="first-rate4" type="radio" name="review[rating]" value="4" />
+                            <label class="star star-4" for="first-rate4"></label>
+                            <input class="star star-3" id="first-rate3" type="radio" name="review[rating]" value="3" />
+                            <label class="star star-3" for="first-rate3"></label>
+                            <input class="star star-2" id="first-rate2" type="radio" name="review[rating]" value="2" />
+                            <label class="star star-2" for="first-rate2"></label>
+                            <input class="star star-1" id="first-rate1" type="radio" name="review[rating]" value="1" />
+                            <label class="star star-1" for="first-rate1"></label> -->
+                            <p><button class="btn btn-warning" <% if (currentUser && campground.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>>Submit</button>
+                          </fieldset>
+                          </form>
+                        </div>
+                     </div>
+                <% } %>
+               </div>
+        <div class="container">
+       <!--Review section-->
+            <div class="thumbnail border border-warning">
+                <div class="caption-full">
 
-        <div class="row mb-5">
-          <div class="col-12">
-            <h2>More Related Posts</h2>
-          </div>
-        </div>
+                    <% if (campground.rating === 0) { %>
+                    <p class="m-0">
+                        <em class="text-muted">No reviews yet.</em>
+                    </p>
+                    <% } else { %>
+                    <p>
+                        <span class="im im-star checked"></span>
+                        <span class="im im-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
+                        <span class="im im-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
+                        <span class="im im-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
+                        <span class="im im-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
+                        <em>(total reviews: <%= campground.reviews.length %>)</em>
+                    </p>
+                    <p>
+                        Current rating: <strong><%= campground.rating.toFixed(2) %></strong>
+                    </p>
+                    <p><h4>Latest reviews:</h4></p>
+                    <hr style="margin-top: 0;">
 
-        <div class="row align-items-stretch retro-layout">
-          
-          <div class="col-md-5 order-md-2">
-            <a href="single.html" class="hentry img-1 h-100 gradient" style="background-image: url('images/img_4.jpg');">
-              <span class="post-category text-white bg-danger">Travel</span>
-              <div class="text">
-                <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                <span>February 12, 2019</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-md-7">
-            
-            <a href="single.html" class="hentry img-2 v-height mb30 gradient" style="background-image: url('images/img_1.jpg');">
-              <span class="post-category text-white bg-success">Nature</span>
-              <div class="text text-sm">
-                <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                <span>February 12, 2019</span>
-              </div>
-            </a>
-            
-            <div class="two-col d-block d-md-flex">
-              <a href="single.html" class="hentry v-height img-2 gradient" style="background-image: url('images/img_2.jpg');">
-                <span class="post-category text-white bg-primary">Sports</span>
-                <div class="text text-sm">
-                  <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                  <span>February 12, 2019</span>
+                    <% campground.reviews.slice(0, 5).forEach(function(review){ %>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <%- '<span class="im im-star checked"></span>'.repeat(review.rating) %><%- '<span class="im im-star"></span>'.repeat(5 - review.rating) %>
+                            <div>Review by: <strong><%= review.author.username %></strong></div>
+                            <span><em><%= review.updatedAt.toDateString() %></em></span>
+                        </div>
+                        <div class="col-md-9">
+                            <p style="text-align: justify; word-wrap: break-word;">
+                                <%= review.text %>
+                            </p>
+                            <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-xs btn-warning"
+                               href="/blogs/<%=campground._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                            <form id="delete-form" action="/blogs/<%=campground._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                    <hr>
+                    <% }); %>
+                    <div style="margin-bottom: 10px;">
+                        <h4><a href="/blogs/<%= campground._id %>/reviews"><i class="fa fa-search" aria-hidden="true"></i> See all reviews</a></h4>
+                    </div>
+                    <% } %> 
                 </div>
-              </a>
-              <a href="single.html" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('images/img_3.jpg');">
-                <span class="post-category text-white bg-warning">Lifestyle</span>
-                <div class="text text-sm">
-                  <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                  <span>February 12, 2019</span>
-                </div>
-              </a>
-            </div>  
-            
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <div class="site-section bg-lightx">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-md-5">
-            <div class="subscribe-1 ">
-              <h2>Subscribe to our newsletter</h2>
-              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit nesciunt error illum a explicabo, ipsam nostrum.</p>
-              <form action="#" class="d-flex">
-                <input type="text" class="form-control" placeholder="Enter your email address">
-                <input type="submit" class="btn btn-primary" value="Subscribe">
-              </form>
             </div>
-          </div>
-        </div>
+      
+        <h3>Comments:</h3>
+          <div class="well">
+              <!--Setting up the add new comment button that is used for collapsing-->
+              <div class="text-right">
+                <p><a class="btn btn-warning pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment"><i class="im im-plus" aria-hidden="true"></i> Add new comment</a></p>
+              </div>
+              <!--Comment section title-->
+                  <h2>Comments <i class="im im-speech-bubble-comment" aria-hidden="true"></i></h2>
+
+                  <!--Collapse Add a comment form START-->
+                  <div class="collapse" id="collapseComment">
+                    <div class="well container jumbotron py-3" style="border-left: 5px solid #5cb85c;">
+                        <% if(!currentUser) { %>
+                      <p>You need to be logged in to do that. <a href="/login">Click here</a> to go to the login page.</p>
+                        <% } %>
+                        <% if(currentUser) { %>
+                      <h4><p>Write your comment <i class="im im-pencil" aria-hidden="true"></i></p></h4>
+                      <form id="add-comment-form" action="/blogs/<%= campground._id %>/comments" method="POST">
+                        <div class="form-group">
+                          <p><input class="form-control" type="text" disabled value="<%= currentUser.username %>"></p>
+                        </div>
+                        <div class="form-group">
+                          <p><textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="3" cols="70"></textarea></p>
+                        </div>
+                        <div class="form-group">
+                          <p><button class="btn btn-warning btn-sm">Done</button></p>
+                        </div>
+                      </form>
+                        <% } %>
+                    </div>
+                  </div>
+                  <!--Collapse Add a comment form END-->
+                  <hr>
+                  <!--Check if there are comments, if there are none say no comments.-->
+                    <% if (campground.comments.length === 0) { %>
+                  <p><em class="text-muted">No comments yet.</em></p>
+                    <% } %>
+
+                  <!--Display comments by looping through them-->
+                    <% campground.comments.forEach(function(comment) { %>
+                  <div class="row container ">
+                    <div class="col-md-12">
+                          <% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
+                        <!--If the current user owns the comment, change the color of the user icon-->
+                        <!-- <i class="im im-user-circle" aria-hidden="true"></i> -->
+                        <p><strong><a href="/users/<%= comment.author.id %>"><%= comment.author.firstName %></a>, 
+                          <% } else { %>
+                        <!--Else just display it black-->
+                        <!-- <i class="im im-user-circle" aria-hidden="true"></i> -->
+                        <a href="/users/<%= comment.author.id %>"><%= comment.author.firstName %></a>, 
+                          <% } %>
+                      <!--Show when the comment was made-->
+                      <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span></strong></p>
+                      <!--Printing the comment-->
+                      <p><%= comment.text %></p>
+                      <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
+                        <% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
+                        <!--Edit button used for collapsing the edit comment form-->
+                          <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse" href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">Edit</a>
+                          <!-- delete comment modal -->
+                            <div class="modal fade" id="deleteCommentModal" tabindex="-1" role="dialog" aria-labelledby="deleteCommentModal" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h3 class="modal-title" id="deleteCommentModalTitle">Delete Comment</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete this comment?</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <form id="delete-form" action="/blogs/<%=campground._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end of delete comment modal -->
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteCommentModal">Delete</button>
+                          <div class="collapse" id="collapseEdit<%= comment._id %>">
+                            <div class="well container jumbotron py-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+                              <h4><p>Edit your comment <i class="im im-pencil" aria-hidden="true"></i></p></h4>
+                              <form id="edit-comment-form<%= comment._id %>" action="/blogs/<%= campground._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+                                <div class="form-group">
+                                  <p><input class="form-control" type="text" disabled value="<%= currentUser.firstName %>"></p>
+                                </div>
+                                <div class="form-group">
+                                  <p><textarea class="form-control" name="comment[text]" placeholder="Your comment text..." form="edit-comment-form<%= comment._id %>" rows="3" cols="70"><%= comment.text %></textarea></p>
+                                </div>
+                                <div class="form-group">
+                                  <p><button class="btn btn-warning btn-sm">Done</button></p>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                            <% } %>
+                          <hr>
+                        </div>
+                      </div>
+                        <% }) %>
+                    </div>
+
+      </div>
+    </section>
+
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="deleteModalTitle"><%= campground.name %></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this post?</p>
+        <p>This can't be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form id="delete-form" action="/blogs/<%= campground._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+        </form>
       </div>
     </div>
+  </div>
+</div>
+
+
     
     
     <div class="site-footer">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-4">
-            <h3 class="footer-heading mb-4">About Us</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
+            <h3 class="mb-4">Founders</h3>
+            <div>
+              <img class="rounded-circle footerimage" src="images/head.jpg">
+              <img class="rounded-circle footerimage" src="images/head.jpg">
+            </div>
+            
           </div>
           <div class="col-md-3 ml-auto">
-            <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
-            <ul class="list-unstyled float-left mr-5">
+            <h3 class="mb-4">Navigation</h3>
+            <ul class="list-unstyled mr-5">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Blogs</a></li>
               <li><a href="#">About Us</a></li>
-              <li><a href="#">Advertise</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Subscribes</a></li>
+              <li><a href="#">Contact Us</a></li>
             </ul>
-            <ul class="list-unstyled float-left">
-              <li><a href="#">Travel</a></li>
-              <li><a href="#">Lifestyle</a></li>
-              <li><a href="#">Sports</a></li>
-              <li><a href="#">Nature</a></li>
-            </ul>
+            
           </div>
           <div class="col-md-4">
             
 
             <div>
-              <h3 class="footer-heading mb-4">Connect With Us</h3>
+              <h3 class="mb-4">Connect With Us</h3>
               <p>
                 <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
                 <a href="#"><span class="icon-twitter p-2"></span></a>
@@ -455,9 +373,9 @@
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <p>
-                           <!-- FOOTER -->
-              Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Built & Developed  by <a href="https://exgro.in/" target="_blank" >ExGro</a></p>
+            <p class="m-0">
+              Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Express</p>
+              <p>Designed & Developed with &#10084; by <a href="https://exgro.in/" target="_blank" >ExGro</a></p>
           </div>
         </div>
       </div>
@@ -465,21 +383,16 @@
     
   </div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/aos.js"></script>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
 
   <script src="js/main.js"></script>
+  
+  
 
 
-    
   </body>
 </html>

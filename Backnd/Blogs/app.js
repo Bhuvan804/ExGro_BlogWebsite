@@ -20,7 +20,7 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
     
-mongoose.connect("mongodb+srv://Udhav:pujajoshi1@@asm.cpd5f.gcp.mongodb.net/Asm1?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://ExPress:1Prachi6@2eshA6@cluster0.ogxzg.gcp.mongodb.net/ExPress?retryWrites=true&w=majority", {
   useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(() => {
     console.log("Connected to DB");
   }).catch(err => {

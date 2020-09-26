@@ -1,82 +1,8 @@
 <%- include ("../partials/header") %>
-	
-<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light py-0">
-        <div class="container py-0">
-            <a class="navbar-brand" href="/"><img src="../../images/NEW LOGO.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-          <div class="collapse navbar-collapse navbar-right" id="navLinks">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/">Home</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/blogs">Blog</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/about">About</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/contact">Contact</a></button></p>
-              </li>
-              <% if(!currentUser){ %>
-              <li class="nav-item">
-                  <p class="m-0"><button><a class="nav-link py-3" href="/login">Login</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/register">Sign Up</a></button></p>
-              </li>
-              <% } else { %>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle nav-link py-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="im im-user-settings"></i></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <p class="pl-3">Hey, <%= currentUser.firstName %></p>
-                    </li><hr>                          
-                        <li>
-                            <p class="pl-3"><a href="/users/<%= currentUser.id %>">My Account</a></p>
-                        </li><hr>
-                        <li>
-                            <p class="pl-3"><a href="/logout">Logout</a></p>
-                        </li>
-                  </ul>
-                </li>
-              <% } %>
-            </ul>
-          </div>
-        </div>
-    </nav>
 
-	<div class="container pt-3">
-        <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
-    </div>
 
-    <div class="container">
-    <header class="jumbotron p-0">
-         <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 bg-transparent">
-                        <li class="breadcrumb-item"><a href="/"><p class="m-0">Home</p></a></li>
-                        <li class="breadcrumb-item"><p class="m-0">Users</p></li>
-                        <li class="breadcrumb-item" aria-current="page"><p class="m-0"><%= user.firstName %></p></li>
-                    </ol>
-                    <!-- <hr class="mt-0"> -->
-                </nav>
-          </div>
-      </header>
-  </div>
 
-	<div class="container">
+	<div class="container" style="margin-top: 5rem;">
 		<div class="row justify-content-center">
 			<div class="col-lg-3">
         <div>
@@ -87,35 +13,46 @@
             </li>
           <% } %>     
         </div>
-				<div class="profile-sidebar sticky-top">
-					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgNy4wMDFjMCAzLjg2NS0zLjEzNCA3LTcgN3MtNy0zLjEzNS03LTdjMC0zLjg2NyAzLjEzNC03LjAwMSA3LTcuMDAxczcgMy4xMzQgNyA3LjAwMXptLTEuNTk4IDcuMThjLTEuNTA2IDEuMTM3LTMuMzc0IDEuODItNS40MDIgMS44Mi0yLjAzIDAtMy44OTktLjY4NS01LjQwNy0xLjgyMi00LjA3MiAxLjc5My02LjU5MyA3LjM3Ni02LjU5MyA5LjgyMWgyNGMwLTIuNDIzLTIuNi04LjAwNi02LjU5OC05LjgxOXoiLz48L3N2Zz4=">
-					<h5 class="mb-3"><%= user.firstName + " " + user.lastName %></h5>
-					<p><%= user.bio %></p>
+				<div class="profile-sidebar sticky-top text-center">
+					<!-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgNy4wMDFjMCAzLjg2NS0zLjEzNCA3LTcgN3MtNy0zLjEzNS03LTdjMC0zLjg2NyAzLjEzNC03LjAwMSA3LTcuMDAxczcgMy4xMzQgNyA3LjAwMXptLTEuNTk4IDcuMThjLTEuNTA2IDEuMTM3LTMuMzc0IDEuODItNS40MDIgMS44Mi0yLjAzIDAtMy44OTktLjY4NS01LjQwNy0xLjgyMi00LjA3MiAxLjc5My02LjU5MyA3LjM3Ni02LjU5MyA5LjgyMWgyNGMwLTIuNDIzLTIuNi04LjAwNi02LjU5OC05LjgxOXoiLz48L3N2Zz4="> -->
+					<h2 class="mb-3"><%= user.firstName + " " + user.lastName %></h2>
+					<p class="border border-white"><%= user.bio %></p>
 				</div>
 			</div>
 			<div class="col-lg-9">
-				<div class="jumbotron py-4">
-					<h1>My Posts</h1>
-						<div class="container">
-							<div class="blog my-3">
-                <% if(campgrounds.length === 0) {%>
-                <p class="text-center"><em class="text-muted">No posts yet.</em></p>
+				<div class="card py-4 blogs bg-dark">
+          <% if (currentUser && user._id.equals(currentUser._id)) { %>
+					<h1 class="container">My Posts</h1>
+          <% } else {%>
+          <h1 class="container">Posts</h1>
+          <% } %>
+
+          <div class="container">
+            <% if(campgrounds.length === 0) {%>
+                <p class="text-center"><em class="text-muted">No posts yet. <p>Coming soon...</p></em></p>
                 <% } %>
-								<% campgrounds.forEach(function(campground) { %>
-								<!-- <div class="card-columns my-3 blog"> -->
-									<div class="card text-white my-3">
-				  						<img class="card-img img-responsive" src="<%= campground.image %>" alt="Card image">
-				  					<div class="cardimg">
-				  						<div class="card-img-overlay">
-				    						<h5 class="card-title"><%= campground.name %></h5>
-				    						<p><a href="/blogs/<%= campground._id %>">View</a></p>
-				  						</div>
-				  					</div>
-								</div>
-								<% }); %>
-							<!-- </div> -->
-						</div>
-					</div>
+                <% campgrounds.forEach(function(campground) { %>
+          <div class="card mt-3 border-0 shadow" data-aos="zoom-out-up">
+              <div class="row p-3">
+              <div class="col-md-3">
+                <a href="/blogs/<%= campground._id %>"><img src="<%= campground.image %>"></a>
+              </div>
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a href="/blogs/<%= campground._id %>"><h3 class="text-black"><%= campground.name %></h3></a>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <a href="/blogs/<%= campground._id %>" class="btn btn-outline-secondary rounded openbtn"><p class="m-0">Open &rarr;</p></a>
+                  </div>
+                </div>                
+                <p><%= campground.outside %>
+                </p>
+              </div>
+            </div>
+            </div>
+            <% }); %>
+          </div>
 				</div>
 			</div>
 		</div>

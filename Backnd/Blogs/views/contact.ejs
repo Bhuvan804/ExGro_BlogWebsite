@@ -1,109 +1,63 @@
 <%- include("./partials/header") %>
 
-<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light py-0">
-        <div class="container py-0">
-            <a class="navbar-brand" href="/"><img src="../../images/NEW LOGO.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-          <div class="collapse navbar-collapse navbar-right" id="navLinks">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/">Home</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/blogs">Blog</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/about">About</a></button></p>
-              </li>
-              <li class="nav-item active">
-                <p class="m-0"><button><a class="nav-link py-3" href="/contact">Contact</a></button></p>
-              </li>
-              <% if(!currentUser){ %>
-              <li class="nav-item">
-                  <p class="m-0"><button><a class="nav-link py-3" href="/login">Login</a></button></p>
-              </li>
-              <li class="nav-item">
-                <p class="m-0"><button><a class="nav-link py-3" href="/register">Sign Up</a></button></p>
-              </li>
-              <% } else { %>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle nav-link py-3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="im im-user-settings"></i></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <p class="pl-3">Hey, <%= currentUser.firstName %></p>
-                    </li><hr>                          
-                        <li>
-                            <p class="pl-3"><a href="/users/<%= currentUser.id %>">My Account</a></p>
-                        </li><hr>
-                        <li>
-                            <p class="pl-3"><a href="/logout">Logout</a></p>
-                        </li>
-                  </ul>
-                </li>
-              <% } %>
-            </ul>
+ <div class="site-section">
+      <h1 class="text-center">Contact Us</h1>
+      <div class="container">
+        <hr>
+        <div class="row">
+
+          <div class="col-md-6">  
+            <div class="p-4 mb-3 text-center">
+              <img src="images/logo1.png" class="w-50">
+              <p>We never liked the idea of being perfect and always had inclination towards what is real,raw because it gives us a story to tell and above all it satisfies our soul so we would love to know about how you are struggling to get something or trying to achieve your dream for. Write us out to know the inside of world of express and join us in our mission of making millions of people smile.</p>
+            </div>
+
           </div>
-        </div>
-    </nav>
+          <div class="col-md-6 mb-5" data-aos="flip-left" data-aos-duration="1000">
 
-<div class="container pt-3">
-        <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
+            
+            <form name="contact" action="https://formsubmit.co/express.it.out.loud@gmail.com" data-netlify="true" method="POST" class="p-4 card contact-form">
+              <div class="row form-group">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" class="form-control rounded" required name="First Name">
+                </div>
+                <div class="col-md-6">
+                  <label for="lname">Last Name</label>
+                  <input type="text" id="lastName" class="form-control rounded" name="Last Name">
+                </div>
+              </div>
+              <div class="row form-group">
+                
+                <div class="col-md-12">
+                  <label for="email">Email</label> 
+                  <input type="email" id="email" class="form-control rounded" name="email" required name="Email">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label for="subject">Subject</label> 
+                  <input type="subject" id="subject" class="form-control rounded" name="subject" required name="Subject">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label for="message">Message</label> 
+                  <textarea name="message" id="message" cols="30" rows="7" class="form-control rounded" name="message" required name="Message"></textarea>
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-md-12 pt-2">
+                  <input type="hidden" name="_subject" value="EXPRESS Contact Form - New Submission">
+                  <button type="submit" class="btn btn-outline-secondary py-2 px-4 border-0"><i class="im im-paperplane"></i></button>
+                </div>
+              </div>  
+            </form>
+          </div>
+
+
+          
         </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
+      </div>
     </div>
-
-
-<div class="container">
-	<header class="jumbotron p-0">
-         <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 bg-transparent">
-                        <li class="breadcrumb-item"><a href="/"><p class="m-0">Home</p></a></li>
-                        <li class="breadcrumb-item" aria-current="page"><p class="m-0">Contact</p></li>
-                    </ol>
-                    <!-- <hr class="mt-0"> -->
-                </nav>
-        </div>
-    </header>
-</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6">
-				<h2>Get In Touch</h2>
-				<div>
-					<p><i class="im im-location"></i></p>
-				</div>
-				<div>
-					<p><i class="im im-phone"></i></p>
-				</div>
-				<div>
-					<p><i class="im im-mail"></i></p>
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<h3>Work With Me!</h3>
-				<form>
-				  <div class="form-group">
-				    <p><input type="text" class="form-control" id="name1" placeholder="Name"></p>
-				  </div>
-				  <div class="form-group">
-				    <p><input type="email" class="form-control" id="email" placeholder="Email"></p>
-				  </div>
-				  <div class="form-group">
-				    <p><textarea id="message" class="form-control" placeholder="Message"></textarea></p>
-				  </div>
-				  <p><button type="submit" class="btn btn-success">Submit</button></p>
-				</form>
-			</div>
-		</div>
-	</div>
 <%- include("./partials/footer") %>

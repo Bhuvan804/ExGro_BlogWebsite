@@ -20,9 +20,9 @@ var upload = multer({ storage: storage, fileFilter: imageFilter})
 
 var cloudinary = require("cloudinary");
 cloudinary.config({ 
-  cloud_name: "asmk", 
-  api_key: "125792419914389", 
-  api_secret: "vJcBAua8XhMcJaZvAL2Bm3fHdRk"
+  cloud_name: "expressloud",
+  api_key: "891833253342346",
+  api_secret: "SlzmxgQ_qmNP2MSZOwL7dhg8KGM"
 });
 
 
@@ -41,7 +41,7 @@ router.get("/", function(req, res){
                     res.redirect("back");
                 } else {
                     if(allCampgrounds.length < 1) {
-                        noMatch = "No campgrounds match that query, please try again.";
+                        noMatch = "No Blogs found, please try again.";
                     }
                     res.render("blogs/index", {
                         campgrounds: allCampgrounds,
@@ -189,7 +189,7 @@ router.delete("/:id", function(req, res) {
   });
 });
 
-Campground Like Route
+// Campground Like Route
 router.post("/:id/like", middleware.isLoggedIn, function (req, res) {
     Campground.findById(req.params.id, function (err, foundCampground) {
         if (err) {

@@ -26,9 +26,9 @@ var upload = multer({ storage: storage, fileFilter: imageFilter})
 
 var cloudinary = require("cloudinary");
 cloudinary.config({
-  cloud_name: "asmk",
-  api_key: "125792419914389",
-  api_secret: "vJcBAua8XhMcJaZvAL2Bm3fHdRk"
+  cloud_name: "expressloud",
+  api_key: "891833253342346",
+  api_secret: "SlzmxgQ_qmNP2MSZOwL7dhg8KGM"
 });
 
 router.get("/contact", function(req, res){
@@ -42,12 +42,23 @@ router.get("/register", function(req, res){
 
 // root route
 router.get("/", function(req, res) {
-  if (req.user) {
-    return res.redirect("/blogs");
-  } else {
-    res.render("landing");
-  }
-});
+  // if (req.user) {
+  //   return res.redirect("/blogs");
+  // } else {
+    User.findById(req.params.user_id, function(err, foundUser) {
+    Campground.find()
+      .exec(function(err, campgrounds) {
+        if (err) {
+          req.flash("error", "Something went wrong");
+          res.render("error");
+        }
+            res.render("landing", {
+              campgrounds: campgrounds,
+            });
+          });
+      });
+  });
+  // }
 
 router.get("/about", function(req, res) {
   res.render("about");
@@ -82,7 +93,7 @@ router.post("/register", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
            req.flash("success", "Successfully Signed Up! Nice to meet you " + req.body.firstName);
-           res.redirect("/blogs"); 
+           res.redirect("/"); 
         });
     });
 });
@@ -101,12 +112,12 @@ router.get("/login", function(req, res) {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/blogs",
+    successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true,
     successFlash: true
   }),
-  function(req, res) {}
+  function(req, res) {req.flash("success", "Welcome back!");}
 );
 
 // logout route
@@ -148,14 +159,14 @@ router.post("/forgot", function(req, res, next) {
       var smtpTransport = nodemailer.createTransport({
         service: "Gmail", 
         auth: {
-          user: "learntocodeinfo@gmail.com",
-          pass: process.env.GMAILPW
+          user: "express.it.out.loud@gmail.com",
+          pass: "1Prachi6@2eshA6"
         }
       });
       var mailOptions = {
         to: user.email,
-        from: "earntocodeinfo@gmail.com",
-        subject: "ASM Password Reset",
+        from: "express.it.out.loud@gmail.com",
+        subject: "ExPress Password Reset",
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, to complete the process:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' +
@@ -212,13 +223,13 @@ router.post("/reset/:token", function(req, res) {
       var smtpTransport = nodemailer.createTransport({
         service: "Gmail", 
         auth: {
-          user: "learntocodeinfo@gmail.com",
-          pass: process.env.GMAILPW
+          user: "express.it.out.loud@gmail.com",
+          pass: "1Prachi6@2eshA6"
         }
       });
       var mailOptions = {
         to: user.email,
-        from: "learntocodeinfo@mail.com",
+        from: "express.it.out.loud@mail.com",
         subject: "Your password has been changed",
         text: "Hello,\n\n" +
           "This is a confirmation that the password for your account " + user.email + " has just been changed.\n"

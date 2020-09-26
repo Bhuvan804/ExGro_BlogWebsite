@@ -1,255 +1,185 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Mini Blog</title>
+    <title>Express</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/aos.css">
-
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
-  <body>
+  <body class="" style="background-color: #222c35 !important">
   
+
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
       <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
+        <div class="site-mobile-menu-close">
+          <div><a href="#"><i class="im im-x-mark js-menu-toggle"></i></a></div>
         </div>
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
     
-    <header class="site-navbar" role="banner">
-      <div class="container-fluid">
+    <header class="site-navbar" role="banner" class="fixed-top">
+      <div class="container">
         <div class="row align-items-center">
-          
-          <div class="col-12 search-form-wrap js-search-form">
-            <form method="get" action="#">
-              <input type="text" id="s" class="form-control" placeholder="Search...">
-              <button class="search-btn" type="submit"><span class="icon-search"></span></button>
-            </form>
-          </div>
 
           <div class="col-4 site-logo">
-            <a href="index.html" class="text-black h2 mb-0">Mini Blog</a>
+            <a class="nav-brand" href="index.html"><img class="img-fluid" src="images/image.png" alt="Home" id="navimg"></a>
           </div>
 
           <div class="col-8 text-right">
             <nav class="site-navigation" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="category.html">Politics</a></li>
-                <li><a href="category.html">Tech</a></li>
-                <li><a href="category.html">Entertainment</a></li>
-                <li><a href="category.html">Travel</a></li>
-                <li><a href="category.html">Sports</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-
-                <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="register.html">Sign Up</a></li>
               </ul>
             </nav>
-            <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a></div>
+            <div><a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><i class="im im-menu"></i></a></div>
           </div>
 
       </div>
     </header>
         
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/img_4.jpg');">
+    <!-- <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/about.jpeg');">
       <div class="container">
         <div class="row same-height justify-content-center">
           <div class="col-md-12 col-lg-10">
             <div class="post-entry text-center">
               <h1 class="">About Us</h1>
-              <p class="lead mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, adipisci?</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    
-    <div class="site-section bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 order-md-2">
-            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-5 mr-auto order-md-1">
-            <h2>We Love To Explore</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptate odit corrupti vitae cupiditate explicabo, soluta quibusdam necessitatibus, provident reprehenderit, dolorem saepe non eligendi possimus autem repellendus nesciunt, est deleniti libero recusandae officiis. Voluptatibus quisquam voluptatum expedita recusandae architecto quibusdam.</p>
-            <ul class="ul-check list-unstyled success">
-              <li>Onsectetur adipisicing elit</li>
-              <li>Dolorem saepe non eligendi possimus</li>
-              <li>Voluptate odit corrupti vitae</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    </div> -->
 
     <div class="site-section">
-      <div class="container">
-        <div class="row mb-5 justify-content-center">
+      <h1 class="text-center">About Us</h1>
+      <div class="container text-center mb-3">
+        <hr>
+        <img src="images/logo1.png" class="aboutimg">
+        <p class="container mb-5 about">When your mind is so full of thoughts that each cross section in it seems to be blocked, let a pen become your brush and a piece of paper your canvas. This is when your words become you. It is easy to pen down your opinions and emotions in those pieces of paper rather than speaking them out loud. Express for us is just that piece of paper or our personal notes where we aim on pouring our heart out so that it would make it light and breezy. Moreover, We feel words lose their essence when spoken out loud, but when penned on a piece of paper they have the power to reach millions of hearts. Express will focus on our fascination with words so that when you read you lure into your thoughts and are caught in a whirlwind of emotions.</p>
+      </div>
+      <div class="container card mb-4">
+        <div class="row mb-5 justify-content-around">
           <div class="col-md-5 text-center">
-            <h2>Meet The Team</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus commodi blanditiis, soluta magnam atque laborum ex qui recusandae</p>
+            <h2 class="text-black mt-4">Meet The Team</h2>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-5 text-center">
-            <img src="images/person_1.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
-            <h2 class="mb-3 h5">Kate Hampton</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum neque nobis eos quam necessitatibus rerum aliquid est tempore, cupiditate iure at voluptatum dolore, voluptates. Debitis accusamus, beatae ipsam excepturi mollitia.</p>
-
+          <div class="col-md-6 col-lg-6 mb-5 text-center">
+            <div class="card site-footer border-0 shadow" data-aos="fade-up">
+              <div class="justify-content-center">
+                <img src="images/esha.jpeg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+              </div>
+            <h2 class="mb-3 h5">Eshneet Kaur Arora</h2>
+            <p class="container abouteach">My motive behind ExPress was to spread hope and little gestures of love because I believe words can change the invisible and if that happens the visible will follow. I’ve always been the person who kept adventures over things and stories over stuff so I wanted to cease every moment being happy and feeling the love while writing about it. It’s an extremely special feeling when your emotions through words fill up those empty pages with so much warmth and magic. I write because it brings joy to my heart and gives me hope that it is okay to wish and to dream even if its absurd.</p>
             <p class="mt-5">
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+              <a href="https://instagram.com/eshaarora_?igshid=nbixva3kobds" target="_blank" class="p-3"><span class="im im-instagram"></span></a>
+              <a href="http://linkedin.com/in/eshneet-kaur-arora-3ba665191" target="_blank" class="p-3"><span class="im im-linkedin"></span></a>
+              <a href="mailto:eshneetkaurarora@gmail.com" target="_blank" class="p-3"><span class="im im-mail"></span></a>
             </p>
+            </div>            
           </div>
 
-          <div class="col-md-6 col-lg-4 mb-5 text-center">
-            <img src="images/person_2.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
-            <h2 class="mb-3 h5">Richard Cook</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum neque nobis eos quam necessitatibus rerum aliquid est tempore, cupiditate iure at voluptatum dolore, voluptates. Debitis accusamus, beatae ipsam excepturi mollitia.</p>
 
+          <div class="col-md-6 col-lg-6 mb-5 text-center">
+            <div class="card site-footer border-0" data-aos="fade-up">
+              <div class="justify-content-center">
+                <img src="images/prachi.jpeg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+              </div>
+              <h2 class="mb-3 h5">Prachi Mangewala</h2>
+              <p class="container abouteach">Writing for me is an escape. When I pour all my thoughts and worries into my words I feel the knots in my brain opening up and a smile spreading on my face. I have always been fascinated by words, how a line from your favourite novel stays with you and how a beautiful lyric from a song describes your life perfectly. This is what we aim to do at ExPress. If while reading any of our blogs your mind just asks you to stop and mutters "This is so fucking relatable" , our work at express would be done.</p>
             <p class="mt-5">
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+              <a href="https://instagram.com/prachi_mangewala?igshid=x6lne0zhhwnu" target="_blank" class="p-3"><span class="im im-instagram"></span></a>
+              <a href="https://www.linkedin.com/in/prachi-mangewala-23a9a41a7" target="_blank" class="p-3"><span class="im im-linkedin"></span></a>
+              <a href="mailto:prachimangewala@gmail.com" target="_blank" class="p-3"><span class="im im-mail"></span></a>
             </p>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-5 text-center">
-            <img src="images/person_3.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
-            <h2 class="mb-3 h5">Kevin Peters</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum neque nobis eos quam necessitatibus rerum aliquid est tempore, cupiditate iure at voluptatum dolore, voluptates. Debitis accusamus, beatae ipsam excepturi mollitia.</p>
-
-            <p class="mt-5">
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="site-section bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-5 ml-auto">
-            <h2>Learn From Us</h2>
-            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptate odit corrupti vitae cupiditate explicabo, soluta quibusdam necessitatibus, provident reprehenderit, dolorem saepe non eligendi possimus autem repellendus nesciunt, est deleniti libero recusandae officiis. Voluptatibus quisquam voluptatum expedita recusandae architecto quibusdam.</p>
-            
-            <ul class="ul-check list-unstyled success">
-              <li>Onsectetur adipisicing elit</li>
-              <li>Dolorem saepe non eligendi possimus</li>
-              <li>Voluptate odit corrupti vitae</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="site-section bg-white">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-md-5">
-            <div class="subscribe-1 ">
-              <h2>Subscribe to our newsletter</h2>
-              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit nesciunt error illum a explicabo, ipsam nostrum.</p>
-              <form action="#" class="d-flex">
-                <input type="text" class="form-control" placeholder="Enter your email address">
-                <input type="submit" class="btn btn-primary" value="Subscribe">
-              </form>
             </div>
+            
           </div>
+
         </div>
       </div>
+      <div class="text-center">
+        <a href="#" class="btn btn-outline-secondary btn-xl rounded px-4 mb-4">Contact Us</a>
+      </div>
     </div>
+
     
     <div class="site-footer">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-4">
-            <h3 class="footer-heading mb-4">About Us</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
+            <h3 class="mb-4">Founders</h3>
+            <div>
+              <img class="rounded-circle footerimage" src="images/head.jpg">
+              <img class="rounded-circle footerimage" src="images/head.jpg">
+            </div>
+            
           </div>
           <div class="col-md-3 ml-auto">
-            <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
-            <ul class="list-unstyled float-left mr-5">
+            <h3 class="mb-4">Navigation</h3>
+            <ul class="list-unstyled mr-5">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Blogs</a></li>
               <li><a href="#">About Us</a></li>
-              <li><a href="#">Advertise</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Subscribes</a></li>
+              <li><a href="#">Contact Us</a></li>
             </ul>
-            <ul class="list-unstyled float-left">
-              <li><a href="#">Travel</a></li>
-              <li><a href="#">Lifestyle</a></li>
-              <li><a href="#">Sports</a></li>
-              <li><a href="#">Nature</a></li>
-            </ul>
+            
           </div>
           <div class="col-md-4">
             
 
             <div>
-              <h3 class="footer-heading mb-4">Connect With Us</h3>
+              <h3 class="mb-4">Connect With Us</h3>
               <p>
-                <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
-                <a href="#"><span class="icon-twitter p-2"></span></a>
-                <a href="#"><span class="icon-instagram p-2"></span></a>
-                <a href="#"><span class="icon-rss p-2"></span></a>
-                <a href="#"><span class="icon-envelope p-2"></span></a>
+                <a href="#"><span class="im im-facebook px-2"></span></a>
+                <a href="#"><span class="im im-instagram pr-2"></span></a>
+                <a href="#"><span class="im im-mail" pr-2></span></a>
               </p>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <p>
-                        <!-- FOOTER -->
-              Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Built & Developed  by <a href="https://exgro.in/" target="_blank" >ExGro</a>   </p>
+            <p class="m-0">
+              Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Express</p>
+              <p>Designed & Developed with &#10084; by <a href="https://exgro.in/" target="_blank" >ExGro</a></p>
           </div>
         </div>
       </div>
     </div>
     
   </div>
-
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/aos.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
 
   <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  
+  
+  
 
- 
+
   </body>
 </html>
