@@ -215,6 +215,7 @@ router.post('/reset/:token', function(req, res) {
           })
         } else {
             req.flash("error", "Passwords do not match.");
+            console.log(err);
             return res.redirect('back');
         }
       });
