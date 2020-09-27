@@ -128,11 +128,11 @@ router.get("/logout", function(req, res) {
 });
 
 // forgot password
-router.get("/forgot", function(req, res) {
-  res.render("forgot");
+router.get('/forgot', function(req, res) {
+  res.render('forgot');
 });
 
-router.post("/forgot", function(req, res, next) {
+router.post('/forgot', function(req, res, next) {
   async.waterfall([
     function(done) {
       crypto.randomBytes(20, function(err, buf) {
@@ -143,7 +143,7 @@ router.post("/forgot", function(req, res, next) {
     function(token, done) {
       User.findOne({ email: req.body.email }, function(err, user) {
         if (!user) {
-          req.flash("error", "No account with that email address exists.");
+          req.flash('error', 'No account with that email address exists.');
           return res.redirect('/forgot');
         }
 
@@ -157,49 +157,49 @@ router.post("/forgot", function(req, res, next) {
     },
     function(token, user, done) {
       var smtpTransport = nodemailer.createTransport({
-        service: "Gmail", 
+        service: 'Gmail', 
         auth: {
-          user: "express.it.out.loud@gmail.com",
-          pass: "1Prachi6@2eshA6"
+          user: 'express.it.out.loud@gmail.com',
+          pass: '1Prachi6@2eshA6'
         }
       });
       var mailOptions = {
         to: user.email,
-        from: "express.it.out.loud@gmail.com",
-        subject: "ExPress Password Reset",
+        from: 'express.it.out.loud@gmail.com',
+        subject: 'Node.js Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, to complete the process:\n\n' +
+          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
-        console.log("Mail sent");
-        req.flash("success", "An e-mail has been sent to " + user.email + " with further instructions.");
-        done(err, "Done");
+        console.log('mail sent');
+        req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        done(err, 'done');
       });
     }
   ], function(err) {
     if (err) return next(err);
-    res.redirect("/forgot");
+    res.redirect('/forgot');
   });
 });
 
-router.get("/reset/:token", function(req, res) {
+router.get('/reset/:token', function(req, res) {
   User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
     if (!user) {
-      req.flash("error", "Password reset link is invalid or has expired.");
-      return res.redirect("/forgot");
+      req.flash('error', 'Password reset token is invalid or has expired.');
+      return res.redirect('/forgot');
     }
     res.render('reset', {token: req.params.token});
   });
 });
 
-router.post("/reset/:token", function(req, res) {
+router.post('/reset/:token', function(req, res) {
   async.waterfall([
     function(done) {
       User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
-          req.flash("error", "Password reset link is invalid or has expired.");
+          req.flash('error', 'Password reset token is invalid or has expired.');
           return res.redirect('back');
         }
         if(req.body.password === req.body.confirm) {
@@ -221,28 +221,29 @@ router.post("/reset/:token", function(req, res) {
     },
     function(user, done) {
       var smtpTransport = nodemailer.createTransport({
-        service: "Gmail", 
+        service: 'Gmail', 
         auth: {
-          user: "express.it.out.loud@gmail.com",
-          pass: "1Prachi6@2eshA6"
+          user: 'express.it.out.loud@gmail.com',
+          pass: '1Prachi6@2eshA6'
         }
       });
       var mailOptions = {
         to: user.email,
-        from: "express.it.out.loud@mail.com",
-        subject: "Your password has been changed",
-        text: "Hello,\n\n" +
-          "This is a confirmation that the password for your account " + user.email + " has just been changed.\n"
+        from: 'express.it.out.loud@gmail.com',
+        subject: 'Your password has been changed',
+        text: 'Hello,\n\n' +
+          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
-        req.flash("success", "Your password has been changed successfully!");
+        req.flash('success', 'Success! Your password has been changed.');
         done(err);
       });
     }
   ], function(err) {
-    res.redirect("/blogs");
+    res.redirect('/blogs');
   });
 });
+
 
 // user profile
 router.get("/users/:user_id", function(req, res) {
