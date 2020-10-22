@@ -100,11 +100,15 @@ h1, h2, h3, h4, h5,
 .section-heading h2 {
   font-weight: 700;
   color: #000; }
+  .counter a{
+    color: #333333 !important;
+    font-size: 0.1px;
+  }
 .site-footer {
   padding: 4em 0;
   background: #333333; }
   .footerimage{
-    max-width: 30%;
+    max-width: 70%;
   }
 
   .site-footer p {
@@ -324,8 +328,9 @@ h1, h2, h3, h4, h5,
         -webkit-box-shadow: none !important;
         box-shadow: none !important; }
       .pagination li a:hover {
-        background: #2f89fc;
+        background: white;
         color: #fff;
+        cursor: pointer;
         border: 1px solid transparent; }
     .pagination li.active a {
       border: 1px solid transparent !important; }
@@ -440,7 +445,7 @@ form p{
 }
 .abouteach{
   color:grey !important;
-  height: 200px;
+  /*height: 270px;*/
 }
 
 

@@ -111,7 +111,9 @@ router.get("/:id", function(req, res){
         path: "reviews",
         options: {sort: {createdAt: -1}}
     }).exec(function(err, foundCampground){
-        if(err){
+        if(err || !foundCampground){
+          req.flash("error", "Blog not found");
+          res.redirect("back");
             console.log(err);
         } else {
             console.log(foundCampground)

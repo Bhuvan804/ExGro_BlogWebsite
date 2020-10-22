@@ -14,6 +14,10 @@ module.exports = {
     checkCampgroundOwnership: function(req, res, next){
         if(req.isAuthenticated()){
             Campground.findById(req.params.id, function(err, campground){
+              if(err || !campground){
+                req.flash("error", "Blog not found");
+                res.redirect("back");
+              } else {
                if(campground.author.id.equals(req.user._id) || req.user.isAdmin){
                    next();
                } else {
@@ -21,6 +25,7 @@ module.exports = {
                    console.log("BADD!!!");
                    res.redirect("/blogs/" + req.params.id);
                }
+             }
             });
         } else {
             req.flash("error", "You need to be signed in to do that!");
@@ -31,12 +36,17 @@ module.exports = {
         console.log("YOU MADE IT!");
         if(req.isAuthenticated()){
             Comment.findById(req.params.comment_id, function(err, comment){
+              if(err || !comment){
+                req.flash("error", "Comment not found");
+                res.redirect("back");
+              } else {
                if(comment.author.id.equals(req.user._id) || req.user.isAdmin){
                    next();
                } else {
                    req.flash("error", "You don't have permission to do that!");
                    res.redirect("/blogs/" + req.params.id);
                }
+             }
             });
         } else {
             req.flash("error", "You need to be signed in to do that!");
@@ -83,7 +93,7 @@ module.exports = {
     if (req.isAuthenticated()) {
         Campground.findById(req.params.id).populate("reviews").exec(function (err, foundCampground) {
             if (err || !foundCampground) {
-                req.flash("error", "Campground not found.");
+                req.flash("error", "Blog not found.");
                 res.redirect("back");
             } else {
                 // check if req.user._id exists in foundCampground.reviews

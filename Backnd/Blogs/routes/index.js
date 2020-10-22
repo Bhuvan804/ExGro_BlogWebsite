@@ -112,7 +112,7 @@ router.get("/login", function(req, res) {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/",
+    successReturnToOrRedirect: "/blogs",
     failureRedirect: "/login",
     failureFlash: true,
     successFlash: true
@@ -166,15 +166,15 @@ router.post('/forgot', function(req, res, next) {
       var mailOptions = {
         to: user.email,
         from: 'express.it.out.loud@gmail.com',
-        subject: 'Node.js Password Reset',
-        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+        subject: 'Express Password Reset',
+        text: 'Hi\nYou are receiving this because you (or someone else) have requested the reset of the password for your account.\n' +
+          'Please click on the following link to reset your password:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
         console.log('mail sent');
-        req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        req.flash('success', 'An email has been sent to ' + user.email + ' with further instructions.');
         done(err, 'done');
       });
     }
@@ -187,7 +187,7 @@ router.post('/forgot', function(req, res, next) {
 router.get('/reset/:token', function(req, res) {
   User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
     if (!user) {
-      req.flash('error', 'Password reset token is invalid or has expired.');
+      req.flash('error', 'Password reset token is invalid or has been expired.');
       return res.redirect('/forgot');
     }
     res.render('reset', {token: req.params.token});
@@ -199,7 +199,7 @@ router.post('/reset/:token', function(req, res) {
     function(done) {
       User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
-          req.flash('error', 'Password reset token is invalid or has expired.');
+          req.flash('error', 'Password reset token is invalid or has been expired.');
           return res.redirect('back');
         }
         if(req.body.password === req.body.confirm) {
@@ -232,7 +232,7 @@ router.post('/reset/:token', function(req, res) {
         to: user.email,
         from: 'express.it.out.loud@gmail.com',
         subject: 'Your password has been changed',
-        text: 'Hello,\n\n' +
+        text: 'Hi,\n' +
           'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {

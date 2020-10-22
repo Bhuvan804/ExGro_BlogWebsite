@@ -60,14 +60,20 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, 
 
 // COMMENT UPDATE
 router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
-   Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
-      if(err){
-          req.flash("error", "Something Went Wrong");
-          res.redirect("back");
-      } else {
-          req.flash("Comment updated")
-          res.redirect("/blogs/" + req.params.id );
-      }
+  Campground.findById(req.params.id, function(err, foundCampground){
+    if(err || !foundCampground) {
+      req.flash("error", "No Blog found");
+      return res.redirect("back");
+    }
+     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
+        if(err){
+            req.flash("error", "Something Went Wrong");
+            res.redirect("back");
+        } else {
+            req.flash("Comment updated")
+            res.redirect("/blogs/" + req.params.id );
+        }
+      });
    });
 });
 

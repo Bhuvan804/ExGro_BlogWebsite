@@ -4,6 +4,17 @@
  	once: true
  });
 
+document.getElementById("register-form").onsubmit = function(e){
+                e.preventDefault()
+
+                //Get the captcha response
+                var formData = new FormData(document.getElementById("register-form"))
+                var captchaResponse = formData.get("g-recaptcha-response")
+
+                fetch("/register/" + encodeURI(document.querySelector("input[type=text]").value)+"/"+encodeURI(captchaResponse), {method: "POST"})
+                .then(()=>location.reload())
+            }
+
 jQuery(document).ready(function($) {
 
 	"use strict";
